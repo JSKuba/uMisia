@@ -25,25 +25,3 @@ function umisia_custom_nav_menu() {
 }
 
 add_action( 'init', 'umisia_custom_nav_menu' );
-
-// Projects Post Type
-// function umisia_custom_post_type() {
-//   register_post_type('Zmienne',
-//     array(
-//       'labels' => array(
-//         'name' => 'Zmienne',
-//         'singular_name' => 'Zmienna',
-//         'add_new_item' => 'Dodaj nową zmienną',
-//         'edit_item' => 'Edytuj zmienną'
-//       ),
-//       'menu-icon' => 'dashicons-clipboard',
-//       'public' => true,
-//       'has_archive' => false,
-//       'supports' => array(
-//         'title', 'editor'
-//       )
-//     )
-//   );
-// }
-
-// add_action('init', 'umisia_custom_post_type');

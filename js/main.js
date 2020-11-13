@@ -54,7 +54,131 @@ function navButtonFunctionality() {
 
 }
 
-const windowWidth = window.innerWidth
+function scrollFunctionality() {
+
+  stickySectionFunctionality()
+  if(isSticky) {
+    setMaskTranslate()
+  }
+  if(!isSticky && isStickyCopy) {
+    document.getElementById('atut-mask-1').style.transform = 'translateX(33%)'
+    document.getElementById('atut-mask-5').style.transform = 'translateX(33%)'
+  }
+  isStickyCopy = isSticky
+
+}
+
+function stickySectionFunctionality() {
+
+  if(window.pageYOffset > atutyOffsetTop && window.pageYOffset < atutyOffsetBottom && !isSticky) {
+    atutyContainerWrapper.style.position = "fixed"
+    return isSticky = true
+  }
+  if (window.pageYOffset < atutyOffsetTop && isSticky) {
+    atutyContainerWrapper.style.position = "absolute"
+    atutyContainerWrapper.style.top = '0'
+    return isSticky = false
+  }
+  if (window.pageYOffset > atutyOffsetBottom && isSticky) {
+    atutyContainerWrapper.style.position = "absolute"
+    atutyContainerWrapper.style.bottom = '0'
+    atutyContainerWrapper.style.top = 'initial'
+    return isSticky = false
+  }
+  
+}
+
+function setMaskTranslate() {
+
+  const progress = Math.ceil(((window.pageYOffset - atutyOffsetTop) / (document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight)) * 10000)/100
+  const maskNumber = Math.ceil(progress / 20)
+  if(maskNumber < 1) {
+    maskNumber = 1
+  } 
+  if(maskNumber > 5) {
+    maskNumber = 5
+  } 
+  const maskProgress = (progress - 20 * Math.floor(progress / 20)) * 5
+  if (maskNumber > 1) {
+    document.getElementById(`atut-mask-${maskNumber-1}`).style.transform = 'translateX(33%)'
+  }
+  if (maskNumber < 5) {
+    document.getElementById(`atut-mask-${maskNumber+1}`).style.transform = 'translateX(33%)'
+  }
+  document.getElementById(`atut-mask-${maskNumber}`).style.transform = `translateX(${(Math.abs(Math.abs(maskProgress-50)-50) * 2) + (33 - 0.33 * Math.abs(Math.abs(maskProgress-50)-50) * 2)}%)`
+
+}
+
+function setAndAppendMasks() {
+
+  [...document.getElementsByClassName('atut')].forEach((v, i) => {
+    const maskElement = document.createElement('div')
+    maskElement.classList.add('atut-mask')
+    maskElement.id = `atut-mask-${i+1}`
+    document.getElementById(`atut-${i+1}`).appendChild(maskElement)
+  })
+
+}
+
+function updateDimensions() {
+
+  windowWidth = window.innerWidth
+  mobileNavHeight = window.innerHeight * 0.6
+  atutyOffsetTop = document.getElementById('atuty').offsetTop
+  atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+
+}
+
+function handleHorizontalScroll(event) {
+
+  horizontalScroll.dynamicPageX = horizontalScroll.offsetPageX + (horizontalScroll.touchStartX - event.changedTouches[0].pageX)
+  projektyContainer.style.transform = `translateX(-${horizontalScroll.dynamicPageX}px)`
+
+}
+
+function handleHorizontalScrollStart(event) {
+
+  projektyContainer.style.transition = 'none'
+  return horizontalScroll.touchStartX = event.changedTouches[0].pageX
+
+}
+
+function changeSliderFooterUI(sliderPosition) {
+
+  arrows[0].style.borderColor = colorPalette[sliderPosition]
+  arrows[1].style.borderColor = colorPalette[sliderPosition]
+  progressBar.style.backgroundColor = colorPalette[sliderPosition]
+  return progressBar.style.transform = `translateX(${- 100 + progressDashWidth / projektsList.length * (sliderPosition + 1)}px)`
+
+}
+
+function switchCardIfNeed(event, direction) {
+
+  !direction && (sliderPosition = Math.round(horizontalScroll.dynamicPageX / projektWidth))
+  direction === 'left' && (sliderPosition -= 1)
+  direction === 'right' && (sliderPosition += 1)
+  sliderPosition < 0 && (sliderPosition = 0)
+  sliderPosition > 5 && (sliderPosition = 5)
+  horizontalScroll.offsetPageX = sliderPosition * projektWidth
+  projektyContainer.style.transition = '.6s ease'
+  projektyContainer.style.transform = `translateX(-${horizontalScroll.offsetPageX}px)`
+  return changeSliderFooterUI(sliderPosition)
+
+}
+
+function handleSliderArrowsClick(element) {
+
+  element.children[0].classList.contains('arrow-left')
+  ? switchCardIfNeed(null, 'left')
+  : switchCardIfNeed(null, 'right')
+
+}
+
+
+
+
+const colorPalette = ['#00FCE2','#703cff','#ca00fc','#FD7FE8','#FFB0B0','#00ffff']
 const navHamburgerButton = document.getElementsByClassName('nav-btn-hamburger')[0]
 const colorBarContainer = document.getElementsByClassName('color-bar-container')[0]
 const colorBarLines = [...document.getElementsByClassName('color-bar-line')]
@@ -62,11 +186,83 @@ const mainHeader = document.getElementById('main-header')
 const mainNav = document.getElementsByClassName('main-nav')[0]
 const mainLogo = document.getElementsByClassName('custom-logo')[0]
 const disabilityHelpContainer = document.getElementsByClassName('disability-help-container')[0]
-let mobileNavHeight = window.innerHeight * 0.6
+const atutyContainerWrapper = document.getElementById('atuty-container-wrapper')
+const projektyContainer = document.getElementById('projekty-container')
+const projektWidth = document.getElementsByClassName('projekt')[0].getBoundingClientRect().width
+const projektsList = [...document.getElementsByClassName('projekt')]
+const arrows = [...document.getElementsByClassName('arrow')]
+const progressBar = document.getElementsByClassName('slider-footer-progress')[0]
+const progressDashWidth = document.getElementsByClassName('slider-footer-dash')[0].clientWidth
+const sliderFooterArrows = [...document.getElementsByClassName('slider-footer-arrow')]
+
 let navActive = true
+let isSticky = false;
+let isStickyCopy = false;
+let insideFixedSection = false;
+let horizontalScroll = {
+  touchStartX: 0,
+  dynamicPageX: 0,
+  offsetPageX: 0
+}
+let sliderPosition = 0;
 
 
+
+//fix
+setAndAppendMasks()
+setTimeout(() => {
+  updateDimensions()
+}, 100)
+
+
+
+createBackground()
+window.addEventListener('scroll', scrollFunctionality)
+window.addEventListener('resize', updateDimensions);
 navHamburgerButton.addEventListener('click', navButtonFunctionality)
+projektyContainer.addEventListener('touchmove', e => handleHorizontalScroll(e))
+projektyContainer.addEventListener('touchstart', e => handleHorizontalScrollStart(e))
+projektyContainer.addEventListener('touchend', switchCardIfNeed)
+sliderFooterArrows.forEach(element => element.addEventListener('click', function() { handleSliderArrowsClick(this)}))
+
+
+function createBackground() {
+  const background = document.createElement('img')
+  const backgroundUrl = './wp-content/themes/UMisia/assets/mobile_bg_main.jpg'
+  background.setAttribute('src', backgroundUrl)
+  new Promise(resolve => background.onload = resolve).then(() => {
+    background.remove()
+    document.getElementsByTagName('main')[0].style.backgroundImage = `url(${backgroundUrl})`
+    document.getElementById('heart').style.animation = 'example 1.5s forwards'
+    document.getElementById('action-button').style.transform = 'none'
+    document.getElementById('action-button').style.opacity = '1'
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
