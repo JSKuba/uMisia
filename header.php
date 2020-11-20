@@ -28,6 +28,7 @@
         <?php
           wp_nav_menu(
             array(
+              'menu' => 'Nawigacja',
               'container' => '',
               'items_wrap' => '<ul class="nav-list">%3$s</ul>'
             )

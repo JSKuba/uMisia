@@ -22,6 +22,7 @@ add_action('after_setup_theme', 'umisia_init');
 
 function umisia_custom_nav_menu() {
   register_nav_menu('my-custom-menu',__( 'Górna nawigacja' ));
+  register_nav_menu('my-custom-menu-footer',__( 'Dolna nawigacja' ));
 }
 
 add_action( 'init', 'umisia_custom_nav_menu' );

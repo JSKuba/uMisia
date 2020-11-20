@@ -4,13 +4,16 @@
 
     <?php for($i = 1; $i <= 6; $i += 1) { ?>
         <div class="metody-card-wrapper">
-          <div class="metody-card">
+          <div class="metody-card" data-toggle="metoda-<?php echo $i ?>">
             <span><?php block_field("metoda-$i") ?></span>
             <figure class="metody-img-container">
               <img class="style-svg" src="<?php block_field("metoda-$i-img") ?>"/>
             </figure>
-            <p><?php block_field("metoda-$i-desc") ?></p>
           </div>
+        </div>
+        <div class="metoda-desc" data="metoda-<?php echo $i ?>">
+        <h5><?php block_field("metoda-$i")?></h5>
+        <p><?php block_field("metoda-$i-desc") ?></p>
         </div>
     <?php } ?>
 

@@ -175,6 +175,43 @@ function handleSliderArrowsClick(element) {
 
 }
 
+function createBackground() {
+
+  const background = document.createElement('img')
+  const backgroundUrl = './wp-content/themes/UMisia/assets/mobile_bg_main.jpg'
+  background.setAttribute('src', backgroundUrl)
+  new Promise(resolve => background.onload = resolve).then(() => {
+    background.remove()
+    document.getElementsByTagName('body')[0].style.backgroundImage = `url(${backgroundUrl})`
+    document.getElementById('heart').style.animation = 'example 1.5s forwards'
+    document.getElementById('action-button').style.transform = 'none'
+    document.getElementById('action-button').style.opacity = '1'
+  })
+  
+}
+
+function clearModal() {
+  const metodaActive = document.getElementsByClassName('metoda-desc-active')[0]
+  return metodaActive && metodaActive.classList.remove('metoda-desc-active')
+}
+
+function cardFunctionality() {
+  clearModal()
+  return document.querySelector(`[data=${this.getAttribute('data-toggle')}]`).classList.add('metoda-desc-active')
+}
+
+function attachCardsFunctionality() {
+
+  [...document.getElementsByClassName('metoda-desc')].forEach(desc => {
+    desc.addEventListener('click', clearModal)
+  });
+  
+  [...document.getElementsByClassName('metody-card')].forEach(card => {
+    card.addEventListener('click', cardFunctionality)
+  })
+
+}
+
 
 
 
@@ -217,6 +254,7 @@ setTimeout(() => {
 
 
 createBackground()
+attachCardsFunctionality()
 window.addEventListener('scroll', scrollFunctionality)
 window.addEventListener('resize', updateDimensions);
 navHamburgerButton.addEventListener('click', navButtonFunctionality)
@@ -224,20 +262,6 @@ projektyContainer.addEventListener('touchmove', e => handleHorizontalScroll(e))
 projektyContainer.addEventListener('touchstart', e => handleHorizontalScrollStart(e))
 projektyContainer.addEventListener('touchend', switchCardIfNeed)
 sliderFooterArrows.forEach(element => element.addEventListener('click', function() { handleSliderArrowsClick(this)}))
-
-
-function createBackground() {
-  const background = document.createElement('img')
-  const backgroundUrl = './wp-content/themes/UMisia/assets/mobile_bg_main.jpg'
-  background.setAttribute('src', backgroundUrl)
-  new Promise(resolve => background.onload = resolve).then(() => {
-    background.remove()
-    document.getElementsByTagName('main')[0].style.backgroundImage = `url(${backgroundUrl})`
-    document.getElementById('heart').style.animation = 'example 1.5s forwards'
-    document.getElementById('action-button').style.transform = 'none'
-    document.getElementById('action-button').style.opacity = '1'
-  })
-}
 
 
 
