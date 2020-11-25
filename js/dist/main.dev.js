@@ -8,8 +8,6 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -59,8 +57,6 @@ function changeColorbarHeight(counter, index) {
 function setNavStyles(navActive) {
   mainNav.style.transition = navActive ? "".concat(windowWidth / 8 * 10 + 50, "ms linear") : "".concat(windowWidth / 8 * 10 + 50, "ms linear ").concat(windowWidth / 8 * 10 + 250, "ms");
   mainNav.style.transform = navActive ? "translateX(-".concat(windowWidth, "px)") : 'translateX(0px)';
-  disabilityHelpContainer.style.transition = navActive ? "".concat(windowWidth / 8 * 10 + 50, "ms linear") : "".concat(windowWidth / 8 * 10 + 50, "ms linear ").concat(windowWidth / 8 * 10 + 250, "ms");
-  disabilityHelpContainer.style.transform = navActive ? "translateX(-".concat(windowWidth, "px)") : 'translateX(0px)';
   mainNav.style.opacity = navActive ? '0' : '1';
   mainHeader.style.transition = navActive ? "".concat(mobileNavHeight / 8 * 10 + 50, "ms linear ").concat(mobileNavHeight / 8 * 10 + 250, "ms") : "".concat(mobileNavHeight / 8 * 10 + 50, "ms linear");
   navHamburgerButton.style.transform = navActive ? 'translateY(0px)' : "translateY(".concat(mobileNavHeight, "px)");
@@ -86,7 +82,9 @@ function scrollFunctionality() {
 
   if (!isSticky && isStickyCopy) {
     document.getElementById('atut-mask-1').style.transform = 'translateX(33%)';
+    document.getElementsByClassName('atut-1-img')[0].style.opacity = '0';
     document.getElementById('atut-mask-5').style.transform = 'translateX(33%)';
+    document.getElementsByClassName('atut-5-img')[0].style.opacity = '0';
   }
 
   isStickyCopy = isSticky;
@@ -117,24 +115,28 @@ function setMaskTranslate() {
   var maskNumber = Math.ceil(progress / 20);
 
   if (maskNumber < 1) {
-    maskNumber = (_readOnlyError("maskNumber"), 1);
+    maskNumber = 1;
   }
 
   if (maskNumber > 5) {
-    maskNumber = (_readOnlyError("maskNumber"), 5);
+    maskNumber = 5;
   }
 
   var maskProgress = (progress - 20 * Math.floor(progress / 20)) * 5;
+  var maskAlgorithm = Math.abs(Math.abs(maskProgress - 50) - 50) * 2;
 
   if (maskNumber > 1) {
     document.getElementById("atut-mask-".concat(maskNumber - 1)).style.transform = 'translateX(33%)';
+    document.getElementsByClassName("atut-".concat(maskNumber - 1, "-img"))[0].style.opacity = '0';
   }
 
   if (maskNumber < 5) {
     document.getElementById("atut-mask-".concat(maskNumber + 1)).style.transform = 'translateX(33%)';
+    document.getElementsByClassName("atut-".concat(maskNumber + 1, "-img"))[0].style.opacity = '0';
   }
 
-  document.getElementById("atut-mask-".concat(maskNumber)).style.transform = "translateX(".concat(Math.abs(Math.abs(maskProgress - 50) - 50) * 2 + (33 - 0.33 * Math.abs(Math.abs(maskProgress - 50) - 50) * 2), "%)");
+  document.getElementById("atut-mask-".concat(maskNumber)).style.transform = "translateX(".concat(maskAlgorithm + (33 - 0.33 * Math.abs(Math.abs(maskProgress - 50) - 50) * 2), "%)");
+  document.getElementsByClassName("atut-".concat(maskNumber, "-img"))[0].style.opacity = "".concat(maskAlgorithm / 100);
 }
 
 function setAndAppendMasks() {
@@ -152,6 +154,7 @@ function updateDimensions() {
   atutyOffsetTop = document.getElementById('atuty').offsetTop;
   atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight;
   document.documentElement.style.setProperty('--vh', "".concat(window.innerHeight * 0.01, "px"));
+  document.documentElement.style.setProperty('--vw', "".concat(window.innerWidth * 0.01, "px"));
 }
 
 function handleHorizontalScroll(event) {
@@ -196,7 +199,8 @@ function createBackground() {
   }).then(function () {
     background.remove();
     document.getElementsByTagName('body')[0].style.backgroundImage = "url(".concat(backgroundUrl, ")");
-    document.getElementById('heart').style.animation = 'example 1.5s forwards';
+    document.getElementsByClassName('hero-figure-mobile')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards';
+    document.getElementsByClassName('hero-figure-desktop')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards';
     document.getElementById('action-button').style.transform = 'none';
     document.getElementById('action-button').style.opacity = '1';
   });
@@ -231,7 +235,6 @@ var colorBarLines = _toConsumableArray(document.getElementsByClassName('color-ba
 var mainHeader = document.getElementById('main-header');
 var mainNav = document.getElementsByClassName('main-nav')[0];
 var mainLogo = document.getElementsByClassName('custom-logo')[0];
-var disabilityHelpContainer = document.getElementsByClassName('disability-help-container')[0];
 var atutyContainerWrapper = document.getElementById('atuty-container-wrapper');
 var projektyContainer = document.getElementById('projekty-container');
 var projektWidth = document.getElementsByClassName('projekt')[0].getBoundingClientRect().width;
@@ -245,6 +248,8 @@ var progressDashWidth = document.getElementsByClassName('slider-footer-dash')[0]
 
 var sliderFooterArrows = _toConsumableArray(document.getElementsByClassName('slider-footer-arrow'));
 
+var atutyOffsetTop = document.getElementById('atuty').offsetTop;
+var atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight;
 var navActive = true;
 var isSticky = false;
 var isStickyCopy = false;
@@ -258,9 +263,9 @@ var sliderPosition = 0; //fix
 
 setAndAppendMasks();
 setTimeout(function () {
+  createBackground();
   updateDimensions();
 }, 100);
-createBackground();
 attachCardsFunctionality();
 window.addEventListener('scroll', scrollFunctionality);
 window.addEventListener('resize', updateDimensions);

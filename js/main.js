@@ -32,8 +32,6 @@ function setNavStyles(navActive) {
 
   mainNav.style.transition = navActive ? `${windowWidth / 8 * 10 + 50}ms linear` : `${windowWidth / 8 * 10 + 50}ms linear ${windowWidth / 8 * 10 + 250}ms`
   mainNav.style.transform = navActive ? `translateX(-${windowWidth}px)` : 'translateX(0px)'
-  disabilityHelpContainer.style.transition = navActive ? `${windowWidth / 8 * 10 + 50}ms linear` : `${windowWidth / 8 * 10 + 50}ms linear ${windowWidth / 8 * 10 + 250}ms`
-  disabilityHelpContainer.style.transform = navActive ? `translateX(-${windowWidth}px)` : 'translateX(0px)'
   mainNav.style.opacity = navActive ? '0' : '1'
   mainHeader.style.transition = navActive ? `${mobileNavHeight / 8 * 10 + 50}ms linear ${mobileNavHeight / 8 * 10 + 250}ms` : `${mobileNavHeight / 8 * 10 + 50}ms linear`
   navHamburgerButton.style.transform = navActive ? 'translateY(0px)' : `translateY(${mobileNavHeight}px)`
@@ -62,7 +60,9 @@ function scrollFunctionality() {
   }
   if(!isSticky && isStickyCopy) {
     document.getElementById('atut-mask-1').style.transform = 'translateX(33%)'
+    document.getElementsByClassName('atut-1-img')[0].style.opacity = '0'
     document.getElementById('atut-mask-5').style.transform = 'translateX(33%)'
+    document.getElementsByClassName('atut-5-img')[0].style.opacity = '0'
   }
   isStickyCopy = isSticky
 
@@ -91,7 +91,7 @@ function stickySectionFunctionality() {
 function setMaskTranslate() {
 
   const progress = Math.ceil(((window.pageYOffset - atutyOffsetTop) / (document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight)) * 10000)/100
-  const maskNumber = Math.ceil(progress / 20)
+  let maskNumber = Math.ceil(progress / 20)
   if(maskNumber < 1) {
     maskNumber = 1
   } 
@@ -99,13 +99,17 @@ function setMaskTranslate() {
     maskNumber = 5
   } 
   const maskProgress = (progress - 20 * Math.floor(progress / 20)) * 5
+  const maskAlgorithm = (Math.abs(Math.abs(maskProgress-50)-50) * 2) 
   if (maskNumber > 1) {
     document.getElementById(`atut-mask-${maskNumber-1}`).style.transform = 'translateX(33%)'
+    document.getElementsByClassName(`atut-${maskNumber-1}-img`)[0].style.opacity = '0'
   }
   if (maskNumber < 5) {
     document.getElementById(`atut-mask-${maskNumber+1}`).style.transform = 'translateX(33%)'
+    document.getElementsByClassName(`atut-${maskNumber+1}-img`)[0].style.opacity = '0'
   }
-  document.getElementById(`atut-mask-${maskNumber}`).style.transform = `translateX(${(Math.abs(Math.abs(maskProgress-50)-50) * 2) + (33 - 0.33 * Math.abs(Math.abs(maskProgress-50)-50) * 2)}%)`
+  document.getElementById(`atut-mask-${maskNumber}`).style.transform = `translateX(${maskAlgorithm + (33 - 0.33 * Math.abs(Math.abs(maskProgress-50)-50) * 2)}%)`
+  document.getElementsByClassName(`atut-${maskNumber}-img`)[0].style.opacity = `${maskAlgorithm / 100}`
 
 }
 
@@ -127,6 +131,7 @@ function updateDimensions() {
   atutyOffsetTop = document.getElementById('atuty').offsetTop
   atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+  document.documentElement.style.setProperty('--vw', `${window.innerWidth * 0.01}px`);
 
 }
 
@@ -183,7 +188,8 @@ function createBackground() {
   new Promise(resolve => background.onload = resolve).then(() => {
     background.remove()
     document.getElementsByTagName('body')[0].style.backgroundImage = `url(${backgroundUrl})`
-    document.getElementById('heart').style.animation = 'example 1.5s forwards'
+    document.getElementsByClassName('hero-figure-mobile')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards'
+    document.getElementsByClassName('hero-figure-desktop')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards'
     document.getElementById('action-button').style.transform = 'none'
     document.getElementById('action-button').style.opacity = '1'
   })
@@ -222,7 +228,6 @@ const colorBarLines = [...document.getElementsByClassName('color-bar-line')]
 const mainHeader = document.getElementById('main-header')
 const mainNav = document.getElementsByClassName('main-nav')[0]
 const mainLogo = document.getElementsByClassName('custom-logo')[0]
-const disabilityHelpContainer = document.getElementsByClassName('disability-help-container')[0]
 const atutyContainerWrapper = document.getElementById('atuty-container-wrapper')
 const projektyContainer = document.getElementById('projekty-container')
 const projektWidth = document.getElementsByClassName('projekt')[0].getBoundingClientRect().width
@@ -232,6 +237,8 @@ const progressBar = document.getElementsByClassName('slider-footer-progress')[0]
 const progressDashWidth = document.getElementsByClassName('slider-footer-dash')[0].clientWidth
 const sliderFooterArrows = [...document.getElementsByClassName('slider-footer-arrow')]
 
+let atutyOffsetTop = document.getElementById('atuty').offsetTop
+let atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
 let navActive = true
 let isSticky = false;
 let isStickyCopy = false;
@@ -248,12 +255,12 @@ let sliderPosition = 0;
 //fix
 setAndAppendMasks()
 setTimeout(() => {
+  createBackground()
   updateDimensions()
 }, 100)
 
 
 
-createBackground()
 attachCardsFunctionality()
 window.addEventListener('scroll', scrollFunctionality)
 window.addEventListener('resize', updateDimensions);

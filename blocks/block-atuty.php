@@ -7,6 +7,7 @@
           <span class="atut-number atut-inner"><?= $i ?></span>
           <span class="atut-name atut-inner"><?php block_field("atut-$i") ?></span>
         </div>
+        <img src="<?php block_field("atut-$i-img") ?>" class="atut-img atut-<?=$i?>-img" style="display: none"/>
       <?php } ?>
     </div>
   </div>

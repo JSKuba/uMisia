@@ -1,8 +1,11 @@
 <article id="o-nas">
-  <div id="o-nas-article-container">
+  <div id="o-nas-article-container" class="wrapper-responsive">
     <h2><?php block_field('title') ?></h2>
-    <figure id="o-nas-img">
-    <div class="img-container"><img class="style-svg" src="<?php block_field('image') ?>"/></div></figure>
-    <p class="p-responsive"><?php block_field('description') ?></p>
+    <div class="o-nas-content">
+      <figure id="o-nas-img">
+        <div class="img-container"><img class="style-svg" src="<?php block_field('image') ?>"/></div>
+      </figure>
+      <p><?php block_field('description') ?></p>
+    </div>
   </div>
 </article>

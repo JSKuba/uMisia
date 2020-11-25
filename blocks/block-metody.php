@@ -1,6 +1,6 @@
 <article id="metody">
   <h3><?php block_field("title") ?></h3>
-  <div id="metody-container">
+  <div id="metody-container" class="wrapper-responsive">
 
     <?php for($i = 1; $i <= 6; $i += 1) { ?>
         <div class="metody-card-wrapper">
@@ -13,7 +13,7 @@
         </div>
         <div class="metoda-desc" data="metoda-<?php echo $i ?>">
         <h5><?php block_field("metoda-$i")?></h5>
-        <p><?php block_field("metoda-$i-desc") ?></p>
+        <p class="wrapper-responsive"><?php block_field("metoda-$i-desc") ?></p>
         </div>
     <?php } ?>
 
