@@ -1,0 +1,150 @@
+.main-footer {
+  color: #ffffff;
+}
+.main-footer::before {
+  content: "";
+  display: block;
+  background: white;
+  height: 150px;
+  position: relative;
+}
+
+.footer-top-wrapper {
+  padding: 1rem 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-nav ul {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-evenly;
+  color: #FF5924;
+  height: 2em;
+  font-size: 0.8em;
+}
+.footer-nav ul li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-info h4 {
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0.8em 0;
+}
+
+.footer-info-contact {
+  display: flex;
+  justify-content: center;
+  padding-left: 10px;
+}
+.footer-info-contact p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+.footer-info-contact p + p {
+  margin-left: 20px;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 0;
+  background-color: #FF5924;
+}
+
+.copyright {
+  font-size: 1em;
+}
+
+.creator {
+  font-size: 0.8em;
+}
+
+@media (min-width: 374px) {
+  .footer-info-contact {
+    padding-left: initial;
+  }
+
+  .footer-nav ul {
+    font-size: 1em;
+  }
+
+  .footer-bottom {
+    font-size: 1.2em;
+  }
+}
+@media (min-width: 591px) {
+  .footer-top {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .footer-nav ul {
+    height: 100%;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .footer-nav ul li {
+    justify-content: flex-end;
+  }
+
+  .footer-top {
+    font-size: 19px;
+  }
+
+  .footer-top-wrapper {
+    padding: 2em 0;
+  }
+}
+@media (min-width: 781px) {
+  .footer-top {
+    font-size: 21px;
+  }
+
+  .footer-top-wrapper {
+    padding: 2.5em 0;
+  }
+}
+@media (min-width: 920px) {
+  .footer-top {
+    font-size: 22px;
+  }
+
+  .footer-top-wrapper {
+    padding: 2.7em 0;
+  }
+}
+@media (min-width: 1199px) {
+  .footer-top {
+    font-size: 24px;
+  }
+
+  .footer-top-wrapper {
+    padding: 3.2em 0;
+  }
+}
+@media (min-width: 1365px) {
+  .footer-top {
+    font-size: 26px;
+  }
+
+  .footer-top-wrapper {
+    padding: 4.5em 0;
+  }
+}

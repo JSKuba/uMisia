@@ -1,9 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-  <section id="o-nas-section">
-    <?php the_content() ?>
-  </section>
+  <?php the_content() ?>
 </main>
 
 
