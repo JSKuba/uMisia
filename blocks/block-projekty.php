@@ -1,7 +1,7 @@
 <article id="projekty">
 
   <h3><?php block_field("title") ?></h3>
-  <div class="projekty-wrapper wrapper-responsive">
+  <div class="projekty-wrapper wrapper-responsive-mb">
 
     <div id="projekty-container">
 
@@ -11,7 +11,7 @@
           <div class="projekt-content-wrapper">
             <div class="projekt-content">
               <h4><?php block_field("projekt-$i-title") ?></h4>
-              <p><?php block_field("projekt-$i-desc") ?></p>
+              <?php block_field("projekt-$i-desc") ?>
             </div>
           </div>
         </div>

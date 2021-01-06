@@ -99,7 +99,8 @@ function setMaskTranslate() {
     maskNumber = 5
   } 
   const maskProgress = (progress - 20 * Math.floor(progress / 20)) * 5
-  const maskAlgorithm = (Math.abs(Math.abs(maskProgress-50)-50) * 2) 
+  // const maskAlgorithm = (Math.abs(Math.abs(maskProgress-50)-50) * 2)
+  const maskAlgorithm = 0 + 4 * maskProgress - 0.04 * Math.pow(maskProgress, 2)
   if (maskNumber > 1) {
     document.getElementById(`atut-mask-${maskNumber-1}`).style.transform = 'translateX(33%)'
     document.getElementsByClassName(`atut-${maskNumber-1}-img`)[0].style.opacity = '0'

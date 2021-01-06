@@ -1,7 +1,7 @@
 <article id="atuty">
   <div id="atuty-container-wrapper">
     <h3><?php block_field("title") ?></h3>
-    <div id="atuty-container">
+    <div id="atuty-container" class="wrapper-responsive-mb">
       <?php for($i = 1; $i <= 5; $i += 1) { ?>
         <div id="atut-<?= $i ?>" class="atut">
           <span class="atut-number atut-inner"><?= $i ?></span>

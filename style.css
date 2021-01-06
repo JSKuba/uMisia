@@ -315,6 +315,17 @@ Version: 1.0
   align-items: center;
   justify-content: center;
 }
+.footer-nav ul li a {
+  transition: 0.4s ease;
+}
+.footer-nav ul li a:hover {
+  color: #eeeeee;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+}
 
 .footer-info h4 {
   text-align: center;
@@ -331,7 +342,7 @@ Version: 1.0
   margin: 0;
   display: flex;
   flex-direction: column;
-  color: #ffffff;
+  color: #dfdfdf;
 }
 .footer-info-contact p + p {
   margin-left: 20px;
@@ -381,6 +392,7 @@ Version: 1.0
 
   .footer-nav ul li {
     justify-content: flex-end;
+    line-height: 1.8;
   }
 
   .footer-top {
@@ -389,6 +401,14 @@ Version: 1.0
 
   .footer-top-wrapper {
     padding: 2em 0;
+  }
+
+  .footer-info {
+    justify-content: space-around;
+  }
+
+  .footer-info h4 {
+    margin: 0;
   }
 }
 @media (min-width: 781px) {
@@ -435,12 +455,17 @@ html, body {
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Bellota", "Helvetica", sans-serif;
   background-attachment: fixed;
   background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 ul {
@@ -453,16 +478,18 @@ a {
   color: inherit;
 }
 
-* {
-  box-sizing: border-box;
+p {
+  margin: 0 auto;
+  color: #333333;
+  line-height: 1.4;
 }
 
 main {
   min-height: calc(100vh - 432px);
 }
 
-.wrapper-responsive {
-  width: 90%;
+.wrapper-responsive-mb {
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
   max-width: 1400px;
@@ -489,8 +516,8 @@ h3::before {
 }
 
 @media (min-width: 451px) {
-  .wrapper-responsive {
-    width: 84%;
+  .wrapper-responsive-mb {
+    width: 89%;
   }
 }
 @media (min-width: 591px) {
@@ -498,8 +525,8 @@ h3::before {
     min-height: calc(100vh - 421px);
   }
 
-  .wrapper-responsive {
-    width: 70%;
+  .wrapper-responsive-mb {
+    width: 75%;
   }
 }
 @media (min-width: 781px) {
@@ -507,7 +534,7 @@ h3::before {
     min-height: calc(100vh - 448px);
   }
 
-  .wrapper-responsive {
+  .wrapper-responsive-mb {
     width: 80%;
   }
 }
@@ -526,7 +553,7 @@ h3::before {
     min-height: calc(100vh - 547px);
   }
 
-  .wrapper-responsive {
+  .wrapper-responsive-mb {
     width: 75%;
   }
 }
@@ -580,7 +607,7 @@ article {
 #action-button {
   margin: 0 auto;
   background: #ff5e00;
-  border: 0;
+  border: 3px solid #ff5e00;
   color: #ffffff;
   padding: 0.6em 1em;
   border-radius: 1.3em;
@@ -588,7 +615,12 @@ article {
   font-family: inherit;
   transform: translateX(-100px);
   opacity: 0;
-  transition: 0.7s ease-out 1s;
+  cursor: pointer;
+  transition: transform 0.7s ease-out 1s, opacity 0.7s ease-out 1s, background-color 0.6s ease, color 0.6s ease;
+}
+#action-button:hover {
+  background: transparent;
+  color: #333333;
 }
 
 h1 {
@@ -644,6 +676,7 @@ h1 span::before {
   display: flex;
   flex-direction: column;
   padding: 50px 0 0;
+  overflow: hidden;
 }
 
 .o-nas-content {
@@ -724,8 +757,6 @@ h2 {
   display: flex;
   flex-direction: column;
   height: 75vh;
-  width: 100%;
-  max-width: 500px;
 }
 
 .atut {
@@ -789,17 +820,18 @@ h2 {
 
 #metody-container {
   margin-top: 4rem;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 3.5em;
+  font-size: 4.2vw;
 }
 
 .metody-card-wrapper {
-  padding: 1.7rem;
   position: relative;
   z-index: 1;
+  width: 15em;
+  height: 20em;
+  margin: 0 auto;
 }
 
 .metody-card {
@@ -809,8 +841,8 @@ h2 {
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-  width: 200px;
-  height: 270px;
+  height: 100%;
+  cursor: pointer;
 }
 .metody-card::after {
   content: "";
@@ -868,7 +900,7 @@ h2 {
   padding: 0 0.6em;
   text-align: center;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.7em;
 }
 
 .metody-img-container {
@@ -876,8 +908,8 @@ h2 {
   justify-content: center;
 }
 .metody-img-container svg {
-  width: 95px;
-  height: 95px;
+  width: 6em;
+  height: 6em;
 }
 
 .metoda-desc {
@@ -893,18 +925,20 @@ h2 {
   align-items: center;
   justify-content: center;
   padding: 0 2rem;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transform: translateX(-100%);
   opacity: 0;
+  cursor: pointer;
 }
 .metoda-desc p {
   color: #ffffff;
+  max-width: 880px;
 }
 
 .metoda-desc h5 {
   text-align: center;
   color: #FF5924;
-  font-size: 1.6rem;
+  font-size: 1.9em;
   margin: 0;
   margin-bottom: 0.5em;
 }
@@ -966,7 +1000,6 @@ h2 {
 }
 
 .projekty-wrapper {
-  width: 100%;
   box-shadow: 0 0 10px #ddd;
   margin-top: 4rem;
   overflow: hidden;
@@ -1145,13 +1178,14 @@ h2 {
 
 #cta {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   background: none;
 }
 #cta .h3-background {
   display: flex;
   background: #ffffff;
   padding-bottom: 4rem;
+  width: 100%;
 }
 
 .cta-container {
@@ -1160,6 +1194,8 @@ h2 {
   grid-auto-columns: 1fr;
   grid-template-areas: "cct cct cit cit cit" "cbt cbt cst cst cst" "ccl cim cim cim ccr" "csb csb csb cbb cbb" "cib cib cib ccb ccb";
   background: none;
+  width: 100%;
+  margin: 0;
 }
 .cta-container * {
   display: flex;
@@ -1174,7 +1210,7 @@ h2 {
 .cta-span {
   padding: 0 1em;
   color: #565656;
-  font-size: 4.3vw;
+  font-size: 3.6vw;
 }
 
 .cta-span, .cta-btn {
@@ -1249,32 +1285,16 @@ h2 {
   background-color: #00FFF6;
 }
 
+.cta-placeholder {
+  flex: 1;
+  background-color: #ffffff;
+  min-width: 1px;
+}
+
 @media (min-width: 374px) {
   #action-button {
-    padding: 0.7em 1.4em;
+    padding: 0.6em 1.4em;
     font-size: 1.1em;
-  }
-
-  .metody-card {
-    width: 250px;
-    height: 337.5px;
-  }
-
-  .metody-card span {
-    font-size: 1.8rem;
-  }
-
-  .metody-img-container svg {
-    width: 115px;
-    height: 115px;
-  }
-
-  .metoda-desc {
-    font-size: 1.2rem;
-  }
-
-  .metoda-desc h5 {
-    font-size: 2.5rem;
   }
 
   .atut {
@@ -1315,21 +1335,34 @@ h2 {
   }
 
   h1 {
-    font-size: 2.25em;
+    font-size: 7.5vw;
   }
 
-  #atuty-container {
-    margin: 0 auto;
-    width: 80%;
+  #metody-container {
+    font-size: 2.64vw;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-}
-@media (min-width: 591px) {
+
   .cta-span {
     font-size: 3.3vw;
   }
 
   .cta-btn button {
-    font-size: 3vw;
+    font-size: 3.2vw;
+  }
+}
+@media (min-width: 591px) {
+  h1 {
+    font-size: 6.6vw;
+  }
+
+  #metody-container {
+    font-size: 2.24vw;
+  }
+
+  h1 {
+    font-size: 2.2em;
   }
 }
 @media (min-width: 781px) {
@@ -1387,6 +1420,7 @@ h2 {
 
   #o-nas {
     padding-top: 0;
+    overflow: hidden;
   }
   #o-nas h2 {
     text-align: right;
@@ -1413,9 +1447,10 @@ h2 {
     background: none !important;
     align-items: center;
     justify-content: space-evenly;
+    padding: 2em 0;
   }
   .projekt img {
-    width: 45%;
+    width: 40%;
   }
   .projekt h4 {
     z-index: 1;
@@ -1428,7 +1463,7 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 85vh;
+    min-height: 70vh;
   }
 
   .projekt-content {
@@ -1442,6 +1477,7 @@ h2 {
 
   .slider-footer {
     padding: 0;
+    padding-bottom: 2em;
   }
 
   .cta-span {
@@ -1450,6 +1486,21 @@ h2 {
 
   .cta-btn button {
     font-size: 2.5vw;
+  }
+
+  #metody-container {
+    font-size: 1.58vw;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5em;
+  }
+
+  .cta-span {
+    font-size: 2.8vw;
+  }
+
+  .cta-btn button {
+    font-size: 2.8vw;
   }
 }
 @media (min-width: 920px) {
@@ -1490,6 +1541,20 @@ h2 {
     max-width: 500px;
   }
 }
+@media (min-width: 1064px) {
+  #metody-container {
+    font-size: 1.45vw;
+    grid-gap: 5.2em;
+  }
+
+  .cta-span {
+    font-size: 2.4vw;
+  }
+
+  .cta-btn button {
+    font-size: 2.4vw;
+  }
+}
 @media (min-width: 1199px) {
   .hero-wrapper {
     padding-top: 45px;
@@ -1521,15 +1586,6 @@ h2 {
   }
 }
 @media (min-width: 1239px) {
-  .metody-card-wrapper {
-    padding: 2rem;
-  }
-
-  .metody-card {
-    width: 255px;
-    height: 344.25px;
-  }
-
   .cta-span {
     font-size: 2.5vw;
     padding: 0 1.5em;
@@ -1552,10 +1608,6 @@ h2 {
     height: 300px;
   }
 
-  .metody-card-wrapper {
-    padding: 2.4rem;
-  }
-
   .cta-span {
     font-size: 2.5vw;
     padding: 0 2em;
@@ -1563,6 +1615,21 @@ h2 {
 
   .cta-btn button {
     font-size: 2.3vw;
+  }
+
+  #metody-container {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 1.05vw;
+    grid-gap: 3.6em;
+  }
+
+  .cta-span {
+    font-size: 1.8em;
+  }
+
+  .cta-btn button {
+    font-size: 1.7em;
   }
 }
 @media (min-width: 1598px) {
@@ -1581,18 +1648,20 @@ h2 {
   .hero-figure-desktop svg {
     height: 430px;
   }
+
+  #metody-container {
+    font-size: 1vw;
+    grid-gap: 5em;
+  }
 }
 @media (min-width: 1681px) {
   .atut-img {
     height: 400px;
   }
-
-  .cta-span {
-    font-size: 2.3vw;
-  }
-
-  .cta-btn button {
-    font-size: 2.1vw;
+}
+@media (min-width: 1866px) {
+  #metody-container {
+    font-size: 18.6px;
   }
 }
 @media (min-width: 1919px) {

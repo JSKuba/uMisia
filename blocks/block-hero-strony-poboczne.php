@@ -4,6 +4,6 @@
     <img src="<?php block_field('img') ?>" alt="">
   </div>
   <div class="bottom">
-    <p class="wrapper-responsive"><?php block_field("desc") ?></p>
+    <p class="wrapper-responsive-mb"><?php block_field("desc") ?></p>
   </div>
 </article>

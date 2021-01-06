@@ -34,7 +34,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    a {
+      transition: .4s ease;
+      &:hover {
+        color: #eeeeee;
+      }
+    }
   }
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .footer-info h4 {
@@ -51,7 +62,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    color: #ffffff;
+    color: #dfdfdf;
   }
   p + p {
     margin-left: 20px;
@@ -107,6 +118,7 @@
 
   .footer-nav ul li {
     justify-content: flex-end;
+    line-height: 1.8;
   }
 
   .footer-top {
@@ -115,6 +127,14 @@
 
   .footer-top-wrapper {
     padding: 2em 0;
+  }
+
+  .footer-info {
+    justify-content: space-around;
+  }
+
+  .footer-info h4 {
+    margin: 0;
   }
 
 }
