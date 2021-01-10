@@ -76,6 +76,7 @@ article {
   opacity: 0;
   cursor: pointer;
   transition: transform .7s ease-out 1s, opacity .7s ease-out 1s, background-color .6s ease, color .6s ease;
+  outline: none;
   &:hover {
     background: transparent;
     color: #333333;
@@ -123,13 +124,20 @@ h1 {
   stroke-dashoffset: 74%;
 }
 
+
+
+
+
 @keyframes example {
   0% {stroke-dashoffset: 74%;}
   100% {stroke-dashoffset: 0%;}
 }
 
-
-
+@keyframes jump {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-20px);}
+  100% {transform: translateY(0);}
+}
 
 
 
@@ -318,6 +326,9 @@ h2 {
   width: 15em;
   height: 20em;
   margin: 0 auto;
+  &:hover {
+    animation: jump ease .3s forwards;
+  }
 }
 
 .metody-card {
@@ -539,6 +550,13 @@ h2 {
   box-shadow: 0 0 6px #c9c9c9;
   border: none;
   background-color: #ffffff;
+  transition: transform .4s ease;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 6px 1px #c9c9c9;
+  }
 }
 
 .arrow {
@@ -647,6 +665,7 @@ h2 {
   border: none;
   padding: .5em 1em;
   border-radius: 1em;
+  outline: none;
 }
 
 
@@ -703,12 +722,30 @@ h2 {
   grid-area: ccb;
 }
 
+.cta-btn-top button, .cta-btn-bottom button {
+  border-style: solid;
+  border-width: .15em;
+  transition: .4s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 .cta-btn-top button {
   background-color: #FD7FE8;
+  border-color: #FD7FE8;
+  &:hover {
+    color: #FD7FE8;
+  }
 }
 
 .cta-btn-bottom button {
   background-color: #00FFF6;
+  border-color: #00FFF6;
+  &:hover {
+    color: #00FFF6;
+  }
 }
 
 .cta-placeholder {
@@ -1134,7 +1171,7 @@ h2 {
   }
 
   #metody-container {
-    font-size: 1vw;
+    font-size: 14.8px;
     grid-gap: 5em;
   }
 
@@ -1151,7 +1188,7 @@ h2 {
 @media(min-width: 1866px) {
 
   #metody-container {
-    font-size: 18.6px;
+    font-size: 16.4px;
   }
 
 }

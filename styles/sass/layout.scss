@@ -2,6 +2,13 @@
 @import 'colors';
 @import 'footer';
 
+* {
+  box-sizing: border-box;
+}
+
+*::selection {
+  background: #ff0000;
+}
 
 html, body {
   margin: 0;
@@ -20,10 +27,25 @@ body {
   background-size: cover;
 }
 
-* {
-  box-sizing: border-box;
+html {
+  --scrollbarBG: #FFB0B0;
+  --thumbBG: rgba(0,0,0,.5);
 }
- 
+body::-webkit-scrollbar {
+  width: 11px;
+}
+body {
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG) ;
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
