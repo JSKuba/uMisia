@@ -86,23 +86,23 @@
 }
 
 #color-bar-line-0 {
-  background-color: $rainbow_color_0;
+  background-color: $theme_color_0;
 }
 
 #color-bar-line-1 {
-  background-color: $rainbow_color_1;
+  background-color: $theme_color_1;
 }
 
 #color-bar-line-2 {
-  background-color: $rainbow_color_2;
+  background-color: $theme_color_2;
 }
 
 #color-bar-line-3 {
-  background-color: $rainbow_color_3;
+  background-color: $theme_color_3;
 }
 
 #color-bar-line-4 {
-  background-color: $rainbow_color_4;
+  background-color: $theme_color_4;
 }
 
 
@@ -159,13 +159,29 @@
   .nav-list li {
     position: relative;
     border-radius: .8em;
-    transition: color .5s ease-in-out;
     background-clip: padding-box !important; 
-    border: solid 2px transparent; 
+    border: solid 2px transparent;
     cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0.7em;
+      opacity: 0;
+      z-index: -1;
+    }
     &:hover a {
       color: white;
     }
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  .nav-list a, .nav-list li::after {
+    transition: .4s ease-out;
   }
 
   .nav-btn-hamburger {
@@ -180,41 +196,36 @@
 
   .nav-list li:nth-child(1), .nav-list li:nth-child(6) {
     border-color: map-get($colors, 1);
-    &:hover {
-      border: none;
-      background: linear-gradient(45deg, $rainbow_color_5, $rainbow_color_6);
+    &::after {
+      background: linear-gradient(45deg, $theme_color_5, $theme_color_6);
     }
   }
 
   .nav-list li:nth-child(2) {
     border-color: map-get($colors, 2);
-    &:hover {
-      border: none;
-      background: linear-gradient(45deg, $rainbow_color_6, $rainbow_color_7);
+    &::after {
+      background: linear-gradient(45deg, $theme_color_6, $theme_color_7);
     }
   }
 
   .nav-list li:nth-child(3) {
     border-color: map-get($colors, 3);
-    &:hover {
-      border: none;
-      background: linear-gradient(45deg, $rainbow_color_7, $rainbow_color_8);
+    &::after {
+      background: linear-gradient(45deg, $theme_color_7, $theme_color_8);
     }
   }
 
   .nav-list li:nth-child(4) {
     border-color: map-get($colors, 4);
-    &:hover {
-      border: none;
-      background: linear-gradient(45deg, $rainbow_color_8, $rainbow_color_9);
+    &::after {
+      background: linear-gradient(45deg, $theme_color_8, $theme_color_9);
     }
   }
 
   .nav-list li:nth-child(5) {
     border-color: map-get($colors, 5);
-    &:hover {
-      border: none;
-      background: linear-gradient(45deg, $rainbow_color_9, $rainbow_color_10);
+    &::after {
+      background: linear-gradient(45deg, $theme_color_9, $theme_color_10);
     }
   }
 

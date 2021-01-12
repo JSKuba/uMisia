@@ -46,9 +46,15 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid var(--scrollbarBG);
 }
 
+article {
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
+  margin-bottom: 0;
 }
 
 a {
@@ -73,7 +79,7 @@ main {
   max-width: 1400px;
 }
 
-h3 {
+ h2, h3 {
   display: inline-flex;
   font-size: 2.7rem;
   margin: 0 auto;
@@ -91,6 +97,10 @@ h3 {
     background: #ff6600;
     border-left: 8px solid #ffbb00;
   }
+}
+
+h3 {
+  margin-bottom: 4rem;
 }
 
 @media (min-width: 451px) {

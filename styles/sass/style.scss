@@ -32,7 +32,6 @@ article {
 
 
 #hero {
-  display: flex;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   padding-top: 75px;
@@ -149,8 +148,6 @@ h1 {
 
 
 #o-nas {
-  display: flex;
-  flex-direction: column;
   padding: 50px 0 0;
   overflow: hidden;
 }
@@ -160,10 +157,13 @@ h1 {
 }
 
 h2 {
+  display: block;
   text-align: center;
   font-size: 5.5rem;
   margin: 0;
-  color: #ff5e00;
+  &::before {
+    content: none;
+  }
 }
 
 #o-nas-img {
@@ -279,23 +279,23 @@ h2 {
 }
 
 #atut-1 {
-  background: $rainbow_color_0;
+  background: $theme_color_0;
 }
 
 #atut-2 {
-  background: $rainbow_color_1;
+  background: $theme_color_1;
 }
 
 #atut-3 {
-  background: $rainbow_color_2;
+  background: $theme_color_2;
 }
 
 #atut-4 {
-  background: $rainbow_color_3;
+  background: $theme_color_3;
 }
 
 #atut-5 {
-  background: $rainbow_color_4;
+  background: $theme_color_4;
 }
 
 
@@ -307,13 +307,10 @@ h2 {
 
 
 #metody {
-  display: flex;
-  flex-direction: column;
   padding-top: 6rem;
 }
 
 #metody-container {
-  margin-top: 4rem;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 3.5em;
@@ -422,8 +419,6 @@ h2 {
 
 
 #projekty {
-  display: flex;
-  flex-direction: column;
   padding-top: 5rem;
   padding-bottom: 6rem;
 }
@@ -475,7 +470,6 @@ h2 {
 
 .projekty-wrapper {
   box-shadow: 0 0 10px #ddd;
-  margin-top: 4rem;
   overflow: hidden;
 }
 
@@ -599,7 +593,7 @@ h2 {
   content: "";
   width: 100px;
   height: 3px;
-  background: $rainbow_color_0;
+  background: $theme_color_0;
   top: 0;
   left: 0;
   transform: translateX(-83.333px);
@@ -613,13 +607,12 @@ h2 {
 
 
 #cta {
-  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   background: none;
   .h3-background {
     display: flex;
     background: #ffffff;
-    padding-bottom: 4rem;
     width: 100%;
   }
 }

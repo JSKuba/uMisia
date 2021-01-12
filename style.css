@@ -156,13 +156,29 @@ Version: 1.0
   .nav-list li {
     position: relative;
     border-radius: 0.8em;
-    transition: color 0.5s ease-in-out;
     background-clip: padding-box !important;
     border: solid 2px transparent;
     cursor: pointer;
   }
+  .nav-list li::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0.7em;
+    opacity: 0;
+    z-index: -1;
+  }
   .nav-list li:hover a {
     color: white;
+  }
+  .nav-list li:hover::after {
+    opacity: 1;
+  }
+
+  .nav-list a, .nav-list li::after {
+    transition: 0.4s ease-out;
   }
 
   .nav-btn-hamburger {
@@ -178,40 +194,35 @@ Version: 1.0
   .nav-list li:nth-child(1), .nav-list li:nth-child(6) {
     border-color: #00FCE2;
   }
-  .nav-list li:nth-child(1):hover, .nav-list li:nth-child(6):hover {
-    border: none;
+  .nav-list li:nth-child(1)::after, .nav-list li:nth-child(6)::after {
     background: linear-gradient(45deg, #00ffff, #006eff);
   }
 
   .nav-list li:nth-child(2) {
     border-color: #703cff;
   }
-  .nav-list li:nth-child(2):hover {
-    border: none;
+  .nav-list li:nth-child(2)::after {
     background: linear-gradient(45deg, #006eff, #6f00ff);
   }
 
   .nav-list li:nth-child(3) {
     border-color: #ca00fc;
   }
-  .nav-list li:nth-child(3):hover {
-    border: none;
+  .nav-list li:nth-child(3)::after {
     background: linear-gradient(45deg, #6f00ff, #e100ff);
   }
 
   .nav-list li:nth-child(4) {
     border-color: #FD7FE8;
   }
-  .nav-list li:nth-child(4):hover {
-    border: none;
+  .nav-list li:nth-child(4)::after {
     background: linear-gradient(45deg, #e100ff, #ff0000);
   }
 
   .nav-list li:nth-child(5) {
     border-color: #FFB0B0;
   }
-  .nav-list li:nth-child(5):hover {
-    border: none;
+  .nav-list li:nth-child(5)::after {
     background: linear-gradient(45deg, #ff0000, #ffff00);
   }
 }
@@ -495,9 +506,15 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid var(--scrollbarBG);
 }
 
+article {
+  display: flex;
+  flex-direction: column;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
+  margin-bottom: 0;
 }
 
 a {
@@ -522,7 +539,7 @@ main {
   max-width: 1400px;
 }
 
-h3 {
+h2, h3 {
   display: inline-flex;
   font-size: 2.7rem;
   margin: 0 auto;
@@ -531,7 +548,7 @@ h3 {
   color: #ff5e00;
   text-align: center;
 }
-h3::before {
+h2::before, h3::before {
   content: "";
   position: absolute;
   width: 13px;
@@ -540,6 +557,10 @@ h3::before {
   left: -29px;
   background: #ff6600;
   border-left: 8px solid #ffbb00;
+}
+
+h3 {
+  margin-bottom: 4rem;
 }
 
 @media (min-width: 451px) {
@@ -600,7 +621,6 @@ article {
 }
 
 #hero {
-  display: flex;
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   padding-top: 75px;
@@ -712,8 +732,6 @@ h1 span::before {
   }
 }
 #o-nas {
-  display: flex;
-  flex-direction: column;
   padding: 50px 0 0;
   overflow: hidden;
 }
@@ -723,10 +741,13 @@ h1 span::before {
 }
 
 h2 {
+  display: block;
   text-align: center;
   font-size: 5.5rem;
   margin: 0;
-  color: #ff5e00;
+}
+h2::before {
+  content: none;
 }
 
 #o-nas-img {
@@ -852,13 +873,10 @@ h2 {
 }
 
 #metody {
-  display: flex;
-  flex-direction: column;
   padding-top: 6rem;
 }
 
 #metody-container {
-  margin-top: 4rem;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
   grid-gap: 3.5em;
@@ -992,8 +1010,6 @@ h2 {
 }
 
 #projekty {
-  display: flex;
-  flex-direction: column;
   padding-top: 5rem;
   padding-bottom: 6rem;
 }
@@ -1043,7 +1059,6 @@ h2 {
 
 .projekty-wrapper {
   box-shadow: 0 0 10px #ddd;
-  margin-top: 4rem;
   overflow: hidden;
 }
 
@@ -1226,14 +1241,13 @@ h2 {
 }
 
 #cta {
-  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   background: none;
 }
 #cta .h3-background {
   display: flex;
   background: #ffffff;
-  padding-bottom: 4rem;
   width: 100%;
 }
 

@@ -1,5 +1,12 @@
 @import 'layout';
 
+
+
+
+
+
+
+
 body {
   background-image: url('../assets/mobile_bg_main.jpg')
 }
@@ -9,13 +16,33 @@ main {
   background-color: white;
 }
 
+h2 {
+  padding-top: 45px;
+  margin: auto;
+  &::before {
+    height: calc(100% - 45px);
+    top: initial;
+    bottom: 0;
+  }
+}
+
 p {
   margin: 0;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 .hero {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
   font-size: 16px;
@@ -24,8 +51,15 @@ p {
 .hero .top {
   position: relative;
   width: 100%;
-  height: calc(100vw / 1.333);
-  max-height: 60vh;
+  height: 75vw;
+  background-image: url(http://umisia.local/wp-content/uploads/2020/11/sky-air-balloon-hot-air-balloon-wind-aircraft-1157317-pxhere.com_-scaled.jpg);
+  background-size: 100% 75vw;
+  background-attachment: fixed;
+}
+
+.hero .top img {
+  width: 100%;
+  display: none;
 }
 
 .hero .top h1 {
@@ -41,13 +75,6 @@ p {
   z-index: 1;
 }
 
-.hero .top img {
-  position: fixed;
-  width: 100%;
-  max-height: 60vh;
-  z-index: 0;
-}
-
 .hero .bottom {
   display: flex;
   align-items: center;
@@ -55,18 +82,72 @@ p {
   color: #555555;
   z-index: 0;
   padding: 50px 0;
-  font-size: .9em;
   line-height: 1.5;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.pierwsze-dni {
+  position: relative;
+  background-color: white;
+}
+
+.colorful-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2.3em;
+}
+
+.colorful-list li {
+  position: relative;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  &::before {
+    content: "";
+    position: absolute;
+    top: .57em;
+    left: 0;
+    transform: translateY(-50%);
+    width: .5em;
+    height: .5em;
+  }
+}
+
+@for $i from 0 through 11 {
+
+  .colorful-list li:nth-of-type(#{$i + 1})::before {
+    background: adjust-hue(#ff0000, $i * 28)
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media(min-width: 372px) {
 
   .hero .top h1 {
     font-size: 4em;
-  }
-
-  .hero .bottom {
-    font-size: 1.1em;
   }
 
 }
@@ -116,7 +197,7 @@ p {
 
   .hero {
     flex-direction: row-reverse;
-    font-size: 22px;
+    font-size: 17px;
     max-width: 730px;
     justify-content: space-between;
     margin: 0 auto;
@@ -126,20 +207,20 @@ p {
   .hero .top {
     width: 55%;
     height: unset;
+    background: none !important;
   }
 
   .hero .top h1 {
-    font-size: 3.4em;
+    font-size: 4.4em;
   }
 
   .hero .top img {
-    position: static;
+    display: initial;
   }
 
   .hero .bottom {
     width: 35%;
     padding: 0;
-    font-size: .75em;
   }
 
   .hero .bottom p {
@@ -156,13 +237,33 @@ p {
     transform: translate3d(-28%, -50%, 0);
   }
 
+  .hero .bottom p {
+    font-size: 1em;
+  }
+
+  .colorful-list {
+    flex-flow: row wrap;
+  }
+
+  .colorful-list li {
+    width: 49%;
+  }
+
+  .colorful-list li:nth-of-type(2n) {
+    margin-left: 2%;
+  }
+
 }
 
 @media(min-width: 856px) {
 
+  p, .colorful-list {
+    font-size: 17px;
+  }
+
   .hero {
     max-width: 800px;
-    font-size: 23px;
+    font-size: 18px;
   }
 
 }
@@ -171,7 +272,7 @@ p {
 
   .hero {
     max-width: 870px;
-    font-size: 24px;
+    font-size: 19px;
   }
 
 }
@@ -181,16 +282,20 @@ p {
 
   .hero {
     max-width: 940px;
-    font-size: 25px;
+    font-size: 20px;
   }
 
 }
 
 @media(min-width: 1190px) {
 
+  p, .colorful-list {
+    font-size: 18px;
+  }
+
   .hero {
     max-width: 980px;
-    font-size: 26px;
+    font-size: 21px;
   }
 
 }
@@ -199,7 +304,7 @@ p {
 
   .hero {
     max-width: 1000px;
-    font-size: 27px;
+    font-size: 22px;
   }
 
 }
@@ -209,7 +314,7 @@ p {
 
   .hero {
     max-width: 1100px;
-    font-size: 28px;
+    font-size: 23px;
   }
 
 }
@@ -218,7 +323,7 @@ p {
 
   .hero {
     max-width: 1200px;
-    font-size: 29px;
+    font-size: 24px;
   }
 
 }
