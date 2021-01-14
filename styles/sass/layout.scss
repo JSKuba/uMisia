@@ -55,6 +55,7 @@ ul {
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 a {
@@ -83,6 +84,7 @@ main {
   display: inline-flex;
   font-size: 2.7rem;
   margin: 0 auto;
+  margin-bottom: 4rem;
   line-height: 1;
   position: relative;
   color: #ff5e00;
@@ -99,8 +101,8 @@ main {
   }
 }
 
-h3 {
-  margin-bottom: 4rem;
+h4 {
+  margin: 0;
 }
 
 @media (min-width: 451px) {
