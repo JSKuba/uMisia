@@ -16,7 +16,7 @@ main {
   background-color: white;
 }
 
-h2 {
+h2, h3 {
   padding-top: 45px;
   &::before {
     height: calc(100% - 45px);
@@ -138,6 +138,9 @@ p {
 
 
 
+
+
+
 .wyprawka .columns-wrapper {
   display: flex;
   flex-direction: column;
@@ -201,6 +204,191 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+.zasady .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.zasady .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.zasady .column li + li {
+  margin-top: 1.5em;
+}
+
+.zasady img {
+  width: 100%;
+}
+
+.zasady .column.right img, .zasady .column.left img {
+  margin-bottom: 1.5em;
+}
+
+.zasady .column.right img {
+  margin-top: 1.5em;
+}
+
+.decor-top, .decor-bottom {
+  position: absolute;
+  width: 180px;
+  height: 30px;
+  background: rgba(255, 166, 0, 0.5);
+  z-index: -1;
+  display: none;
+  &::before {
+    content: "";
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(255, 81, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    transform: rotate(90deg);
+  }
+}
+
+.decor-top {
+  top: -40px;
+  left: -40px;
+  &::before {
+    transform-origin: 15px;
+  }
+}
+
+.decor-bottom {
+  bottom: -40px;
+  right: -40px;
+  &::before {
+    transform-origin: 285px;    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.prostokaty .wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rect {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 42%;
+  padding: 2.4em;
+  font-size: 24px;
+  p {
+    line-height: 1.6;
+  }
+}
+
+.rect.left {
+  background: #FFD5BA;
+}
+
+.rect.right {
+  background: #FFEFBA;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.ztk .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.ztk .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ztk .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.ztk .right {
+  width: 50%;
+}
+
+.ztk img {
+  width: 100%;
+}
+
+.ztk .communicate {
+  width: 50%;
+  text-align: center;
+  color: #ffffff;
+  background-color: #FF6501;
+  margin: 0 auto;
+  padding: 1.25em;
+  margin-top: 3.5em;
+}
+
+
+
+
+
+
+
+
+
+
+.do-pobrania {
+  padding-bottom: 1em;
+}
+
+.do-pobrania .linki li + li {
+  padding-top: .7em;
+}
+
+.do-pobrania .linki a {
+  color: #ff5e00;
+  font-size: 1.6rem;
+  border-bottom: .1em dashed #ff0000;
+  transition: .4s ease;
+  &:hover {
+    color: #c94a00;
+    border-color: #bb0000;
+  }
+}
 
 
 
@@ -292,6 +480,7 @@ p {
   .hero .bottom {
     width: 35%;
     padding: 0;
+    margin: 0;
   }
 
   .hero .bottom p {
@@ -346,12 +535,38 @@ p {
     width: 80%;
   }
 
+  .decor-top, .decor-bottom {
+    display: initial;
+  }
+
+  .zasady .wrapper {
+    flex-direction: row;
+  }
+
+  .zasady .column {
+    width: 48%;
+    justify-content: space-between;
+  }
+
+  .zasady .column.left {
+    flex-direction: column-reverse;
+  }
+
+  .zasady .column.right img {
+    margin-top: 0;
+  }
+
+  .zasady .column.left img {
+    margin-bottom: 0;
+    margin-top: 1.5em;
+  }
+
 }
 
 @media(min-width: 856px) {
 
   html {
-    font-size: 17px
+    font-size: 17px;
   }
 
   .hero {
@@ -380,6 +595,27 @@ p {
   .hero {
     max-width: 940px;
     font-size: 20px;
+  }
+
+  .decor-top, .decor-bottom {
+    width: 300px;
+    height: 50px;
+  }
+    
+  .decor-top {
+    top: -70px;
+    left: -70px;
+    &::before {
+      transform-origin: 25px;
+    }
+  }
+  
+  .decor-bottom {
+    bottom: -70px;
+    right: -70px;
+    &::before {
+      transform-origin: 275px;    
+    }
   }
 
 }

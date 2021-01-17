@@ -73,6 +73,12 @@ main {
   min-height: calc(100vh - 432px);
 }
 
+ol {
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
+}
+
 .wrapper-responsive-mb {
   width: 95%;
   margin-left: auto;
