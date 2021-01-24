@@ -7,7 +7,7 @@
 
       <?php for($i = 1; $i <= 6; $i += 1) { ?>
         <div class="projekt">
-          <img src="https://picsum.photos/30<?=$i?>/200" data-number="<?=$i?>"/>
+          <img src="https://picsum.photos/60<?=$i?>/400" data-number="<?=$i?>"/>
           <div class="projekt-content-wrapper">
             <div class="projekt-content">
               <h4><?php block_field("projekt-$i-title") ?></h4>
