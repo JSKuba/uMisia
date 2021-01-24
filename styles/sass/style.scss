@@ -407,7 +407,7 @@ h2 {
 .metoda-desc-active {
   opacity: 1;
   transform: translateX(0);
-  transition: .5s ease-out;
+  transition: opacity .4s ease .2s, transform .4s ease;
 }
 
 
