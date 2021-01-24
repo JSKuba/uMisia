@@ -130,7 +130,7 @@ Version: 1.0
     position: static;
     height: initial;
     width: 100%;
-    max-width: 800px;
+    max-width: 860px;
   }
 
   .nav-list {
@@ -278,10 +278,6 @@ Version: 1.0
   }
 }
 @media (min-width: 1228px) {
-  .nav-container {
-    width: 85%;
-  }
-
   .nav-list {
     padding-left: 25px;
   }

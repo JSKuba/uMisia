@@ -168,6 +168,11 @@ function handleHorizontalScrollStart(event) {
   return horizontalScroll.touchStartX = event.changedTouches[0].pageX;
 }
 
+function handleHorizontalScrollEnd(event) {
+  horizontalScroll.touchEndX = event.changedTouches[0].clientX;
+  return switchCardIfNeed();
+}
+
 function changeSliderFooterUI(sliderPosition) {
   arrows[0].style.borderColor = colorPalette[sliderPosition];
   arrows[1].style.borderColor = colorPalette[sliderPosition];
@@ -176,9 +181,15 @@ function changeSliderFooterUI(sliderPosition) {
 }
 
 function switchCardIfNeed(event, direction) {
-  !direction && (sliderPosition = Math.round(horizontalScroll.dynamicPageX / projektWidth));
-  direction === 'left' && (sliderPosition -= 1);
-  direction === 'right' && (sliderPosition += 1);
+  console.log(horizontalScroll);
+
+  if (direction) {
+    direction === 'left' && (sliderPosition -= 1);
+    direction === 'right' && (sliderPosition += 1);
+  } else {
+    horizontalScroll.touchStartX - horizontalScroll.touchEndX > 0 ? sliderPosition += 1 : sliderPosition -= 1;
+  }
+
   sliderPosition < 0 && (sliderPosition = 0);
   sliderPosition > 5 && (sliderPosition = 5);
   horizontalScroll.offsetPageX = sliderPosition * projektWidth;
@@ -200,8 +211,8 @@ function createBackground() {
   }).then(function () {
     background.remove();
     document.getElementsByTagName('body')[0].style.backgroundImage = "url(".concat(backgroundUrl, ")");
-    document.getElementsByClassName('hero-figure-mobile')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards';
-    document.getElementsByClassName('hero-figure-desktop')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards';
+    document.getElementsByClassName('hero-figure-mobile')[0].getElementsByClassName('heart')[0] !== undefined && (document.getElementsByClassName('hero-figure-mobile')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards');
+    document.getElementsByClassName('hero-figure-desktop')[0].getElementsByClassName('heart')[0] !== undefined && (document.getElementsByClassName('hero-figure-desktop')[0].getElementsByClassName('heart')[0].style.animation = 'example 1.5s forwards');
     document.getElementById('action-button').style.transform = 'none';
     document.getElementById('action-button').style.opacity = '1';
   });
@@ -257,16 +268,20 @@ var isStickyCopy = false;
 var insideFixedSection = false;
 var horizontalScroll = {
   touchStartX: 0,
+  touchEndX: 0,
   dynamicPageX: 0,
   offsetPageX: 0
 };
-var sliderPosition = 0; //fix
+var sliderPosition = 0; // TO-DO
 
 setAndAppendMasks();
-setTimeout(function () {
+updateDimensions();
+
+window.onload = function () {
   createBackground();
-  updateDimensions();
-}, 100);
+}; // TO-DO spiąć w całość
+
+
 attachCardsFunctionality();
 window.addEventListener('scroll', scrollFunctionality);
 window.addEventListener('resize', updateDimensions);
@@ -277,7 +292,9 @@ projektyContainer.addEventListener('touchmove', function (e) {
 projektyContainer.addEventListener('touchstart', function (e) {
   return handleHorizontalScrollStart(e);
 });
-projektyContainer.addEventListener('touchend', switchCardIfNeed);
+projektyContainer.addEventListener('touchend', function (e) {
+  return handleHorizontalScrollEnd(e);
+});
 sliderFooterArrows.forEach(function (element) {
   return element.addEventListener('click', function () {
     handleSliderArrowsClick(this);
