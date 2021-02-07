@@ -287,7 +287,7 @@
   content: "";
   display: block;
   background: white;
-  height: 150px;
+  height: 14rem;
   position: relative;
 }
 
@@ -523,6 +523,7 @@ p {
 
 main {
   min-height: calc(100vh - 432px);
+  overflow: hidden;
 }
 
 ol {
@@ -542,7 +543,7 @@ h2, h3 {
   display: inline-flex;
   font-size: 2.7rem;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 2.4em;
   line-height: 1;
   position: relative;
   color: #ff5e00;
@@ -604,4 +605,27 @@ h4 {
   .wrapper-responsive-mb {
     width: 75%;
   }
+}
+*[fade] {
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out, color 0.6s ease-out;
+}
+
+*[fade]:not([fade=color]) {
+  opacity: 0;
+}
+
+*[fade][visible] {
+  opacity: 1;
+}
+
+*[fade=right] {
+  transform: translateX(100%);
+}
+
+*[fade=left] {
+  transform: translateX(-100%);
+}
+
+*[fade=right][visible], *[fade=left][visible] {
+  transform: translateX(0);
 }

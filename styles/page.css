@@ -287,7 +287,7 @@
   content: "";
   display: block;
   background: white;
-  height: 150px;
+  height: 2.4em;
   position: relative;
 }
 
@@ -523,6 +523,7 @@ p {
 
 main {
   min-height: calc(100vh - 432px);
+  overflow: hidden;
 }
 
 ol {
@@ -542,7 +543,7 @@ h2, h3 {
   display: inline-flex;
   font-size: 2.7rem;
   margin: 0 auto;
-  margin-bottom: 4rem;
+  margin-bottom: 2.4em;
   line-height: 1;
   position: relative;
   color: #ff5e00;
@@ -605,6 +606,27 @@ h4 {
     width: 75%;
   }
 }
+*[fade] {
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out;
+}
+
+*[fade][visible] {
+  opacity: 1;
+}
+
+*[fade=right] {
+  transform: translateX(100%);
+}
+
+*[fade=left] {
+  transform: translateX(-100%);
+}
+
+*[fade=right][visible], *[fade=left][visible] {
+  transform: translateX(0);
+}
+
 body {
   background-image: url("../assets/mobile_bg_main.jpg");
 }
@@ -693,6 +715,10 @@ p {
   transform: translateY(-50%);
   width: 0.5em;
   height: 0.5em;
+}
+
+.colorful-list li:nth-last-child(-n+2) {
+  padding-bottom: 0;
 }
 
 .colorful-list li:nth-of-type(1)::before {
@@ -898,6 +924,10 @@ p {
   flex-direction: column;
 }
 
+.ztk .column {
+  margin-bottom: 2em;
+}
+
 .ztk .top {
   display: flex;
   flex-direction: column;
@@ -908,12 +938,11 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-bottom: 2em;
 }
 
 .ztk .right {
-  width: 90%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ztk img {
@@ -921,13 +950,12 @@ p {
 }
 
 .ztk .communicate {
-  width: 50%;
+  width: 100%;
   text-align: center;
   color: #ffffff;
   background-color: #FF6501;
   margin: 0 auto;
-  padding: 1.25em;
-  margin-top: 3.5em;
+  padding: 0.8em;
 }
 
 .do-pobrania {
@@ -951,6 +979,67 @@ p {
 .do-pobrania .linki a:hover {
   color: #c94a00;
   border-color: #bb0000;
+}
+
+.kontakt .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.kontakt .wrapper > * + * {
+  margin-top: 2em;
+}
+
+.kontakt .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.kontakt .left > * + * {
+  margin-top: 1em;
+}
+
+.kontakt .contact-list {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.kontakt .contact-list li p {
+  color: #333333;
+  line-height: 2;
+}
+
+.kontakt .contact-list li:first-child p {
+  color: #ff5e00;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.kontakt .buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.kontakt .buttons-wrapper a {
+  width: 7em;
+  height: 7em;
+  padding: 1.5em;
+}
+
+.kontakt .buttons-wrapper a svg {
+  width: 100%;
+  height: 100%;
+}
+
+.kontakt #call-button {
+  background-color: #ca00fc;
+}
+.kontakt #mail-button {
+  background-color: #703cff;
+}
+.kontakt #facebook-button {
+  background-color: #006eff;
 }
 
 @media (min-width: 372px) {
@@ -1120,6 +1209,33 @@ p {
   }
 
   .do-pobrania .linki {
+    text-align: initial;
+  }
+
+  .ztk .communicate {
+    width: 50%;
+    margin: 3em auto 0;
+    padding: 1.25em;
+  }
+
+  .kontakt .wrapper {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  .kontakt .right {
+    width: 45%;
+  }
+
+  .kontakt .wrapper > * + * {
+    margin-top: unset;
+  }
+
+  .kontakt .left > * + * {
+    margin-top: unset;
+  }
+
+  .kontakt .contact-list {
     text-align: initial;
   }
 }

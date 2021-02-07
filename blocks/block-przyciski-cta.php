@@ -1,10 +1,10 @@
 <article id="cta">
 
   <div class="h3-background">
-    <h3><?php block_field("title") ?></h3>
+    <h3 fade="right"><?php block_field("title") ?></h3>
   </div>
   <div class="cta-placeholder"></div>
-  <div class="cta-container wrapper-responsive-mb">
+  <div class="cta-container wrapper-responsive-mb" fade="center">
     <div class="cta-color-top"></div>
     <div class="cta-img cta-img-top">
       <img src="https://picsum.photos/800/400"/>

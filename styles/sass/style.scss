@@ -33,7 +33,6 @@ article {
 
 #hero {
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
   padding-top: 75px;
   margin: 0;
   align-self: flex-end;
@@ -44,6 +43,42 @@ article {
 .hero-wrapper {
   height: 100%;
   display: flex;
+  position: relative;
+}
+
+#scroll-indicator {
+  position: absolute;
+  left: 4%;
+  bottom: 4%;
+  fill: none;
+  stroke: #565656;
+  stroke-width: 5%;
+  width: 40px;
+  overflow: visible;
+  transition: 1s ease;
+  opacity: 0;
+}
+
+#scroll-indicator.show {
+  opacity: 1;
+}
+
+#scroll-indicator .top, #scroll-indicator .middle, #scroll-indicator .bottom {
+  animation: pulse 2s infinite;
+}
+
+#scroll-indicator .middle {
+  animation-delay: .2s;
+}
+
+#scroll-indicator .bottom {
+  animation-delay: .4s;
+}
+
+@keyframes pulse {
+  0% {opacity: 1}
+  50% {opacity: 0}
+  100% {opacity: 1}
 }
 
 .hero-left {
@@ -124,9 +159,6 @@ h1 {
 }
 
 
-
-
-
 @keyframes example {
   0% {stroke-dashoffset: 74%;}
   100% {stroke-dashoffset: 0%;}
@@ -148,7 +180,7 @@ h1 {
 
 
 #o-nas {
-  padding: 50px 0 0;
+  padding: 50px 0 8em 0;
   overflow: hidden;
 }
 
@@ -307,7 +339,7 @@ h2 {
 
 
 #metody {
-  padding-top: 6rem;
+  padding-top: 14rem;
 }
 
 #metody-container {
@@ -419,8 +451,7 @@ h2 {
 
 
 #projekty {
-  padding-top: 5rem;
-  padding-bottom: 6rem;
+  padding: 14rem 0;
 }
 
 #projekty-container {
@@ -600,6 +631,118 @@ h2 {
   transition: transform .6s ease .3s; 
   z-index: 2;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+#zajecia-dodatkowe {
+  padding-bottom: 14em;
+}
+
+#zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
+  height: 800px;
+  position: relative;
+}
+
+#zajecia-dodatkowe .word {
+  position: absolute;
+  color: #999999;
+}
+
+#zajecia-dodatkowe #word-1 {
+  left: 12%;
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+#zajecia-dodatkowe #word-2 {
+  top: 18%;
+  left: 40%;
+  font-size: 3.7vw
+}
+
+#zajecia-dodatkowe #word-3 {
+  top: 32%;
+  right: 0%;
+  font-size: 4.4vw;
+  font-weight: 300;
+}
+
+#zajecia-dodatkowe #word-4 {
+  top: 30%;
+  left: 0%;
+  font-size: 9.6vw
+}
+
+#zajecia-dodatkowe #word-5 {
+  bottom: 31%;
+  right: 21%;
+  font-size: 4vw;
+  font-weight: bold;
+}
+
+#zajecia-dodatkowe #word-6 {
+  bottom: 20%;
+  left: 13%;
+  font-size: 3vw;
+}
+
+
+#zajecia-dodatkowe #word-7 {
+  right: 10%;
+  bottom: 0;
+  font-size: 3.5vw;
+  font-weight: 300;
+}
+
+#zajecia-dodatkowe #word-1[visible] {
+  color: $theme_color_0;
+}
+
+#zajecia-dodatkowe #word-2[visible] {
+  color: $theme_color_1;
+}
+
+#zajecia-dodatkowe #word-3[visible] {
+  color: $theme_color_2;
+}
+
+#zajecia-dodatkowe #word-4[visible] {
+  color: $theme_color_3;
+}
+
+#zajecia-dodatkowe #word-5[visible] {
+  color: $theme_color_4;
+}
+
+#zajecia-dodatkowe #word-6[visible] {
+  color: $theme_color_10;
+}
+
+#zajecia-dodatkowe #word-7[visible] {
+  color: $theme_color_11;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -996,6 +1139,13 @@ h2 {
 
   .cta-btn button {
     font-size: 2.8vw;
+  }
+
+  #scroll-indicator {
+    left: 50%;
+    bottom: 4%;
+    width: 40px;
+    transform: translateY(-50%);
   }
   
 }

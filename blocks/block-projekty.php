@@ -1,7 +1,7 @@
 <article id="projekty">
 
-  <h3><?php block_field("title") ?></h3>
-  <div class="projekty-wrapper wrapper-responsive-mb">
+  <h3 fade="right"><?php block_field("title") ?></h3>
+  <div class="projekty-wrapper wrapper-responsive-mb" fade="center">
 
     <div id="projekty-container">
 

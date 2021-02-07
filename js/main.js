@@ -59,6 +59,66 @@ function updateDimensions() {
 
 }
 
+function checkfadeElements() {
+
+  firstElement = fadeElementsArray[0]
+
+  if (firstElement && window.pageYOffset + window.innerHeight * 0.66 > firstElement.breakpoint) {
+    firstElement.node.setAttribute('visible', '')
+    fadeElementsArray.shift()
+    fadeElementsArray.length === 0 && (checkfadeElements = function() {return true})
+  }
+
+}
+
+function updateFadeElementsArray() {
+
+  document.querySelectorAll('[fade]').forEach(element => {
+
+    elementOffsetTop =  element.getBoundingClientRect().top
+
+    if (window.pageYOffset + window.innerHeight * 0.66 >= elementOffsetTop) {
+
+      element.setAttribute('visible', '')
+
+    } else if (!element.getAttribute('visible')) {
+
+      if (!fadeElementsArray.length) {
+
+        fadeElementsArray.push({node: element, breakpoint: elementOffsetTop})
+  
+      } else {
+  
+        for (backwardsCounter = fadeElementsArray.length - 1; backwardsCounter >= 0; backwardsCounter -= 1) {
+          
+          if (elementOffsetTop >= fadeElementsArray[backwardsCounter].breakpoint && backwardsCounter === fadeElementsArray.length - 1) {
+
+            fadeElementsArray.push({node: element, breakpoint: elementOffsetTop})
+            break
+  
+          } else if (elementOffsetTop >= fadeElementsArray[backwardsCounter].breakpoint) {
+  
+            fadeElementsArray.splice(backwardsCounter + 1, 0, {node: element, breakpoint: elementOffsetTop})
+            break
+  
+          }
+  
+        }
+  
+      }
+
+    }
+
+  })
+
+}
+
+function facebookButtonUtility() {
+  setTimeout(function () { window.location = facebookButton.getAttribute('link'); }, 25);
+  window.location = "fb://page/161391994302243";
+  // TO-DO
+}
+
 
 
 const colorPalette = ['#00FCE2','#703cff','#ca00fc','#FD7FE8','#FFB0B0','#00ffff']
@@ -68,6 +128,8 @@ const colorBarLines = [...document.getElementsByClassName('color-bar-line')]
 const mainHeader = document.getElementById('main-header')
 const mainNav = document.getElementsByClassName('main-nav')[0]
 const mainLogo = document.getElementsByClassName('custom-logo')[0]
+const fadeElementsArray = []
+const facebookButton = document.getElementById('facebook-button')
 
 let navActive = true
 let isSticky = false;
@@ -78,4 +140,10 @@ setTimeout(() => {
   updateDimensions()
 }, 100)
 
+window.onload = () => {
+  updateFadeElementsArray()
+}
+
 navHamburgerButton.addEventListener('click', navButtonFunctionality)
+facebookButton !== null && facebookButton.addEventListener('click', facebookButtonUtility)
+window.addEventListener('scroll', checkfadeElements)
