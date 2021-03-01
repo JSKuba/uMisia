@@ -338,9 +338,6 @@ h2 {
 
 
 
-#metody {
-  padding-top: 14rem;
-}
 
 #metody-container {
   display: grid;
@@ -450,8 +447,8 @@ h2 {
 
 
 
-#projekty {
-  padding: 14rem 0;
+#projekty .wrapper {
+  padding-bottom: 6px;
 }
 
 #projekty-container {
@@ -644,13 +641,11 @@ h2 {
 
 
 
-#zajecia-dodatkowe {
-  padding-bottom: 14em;
-}
 
 #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
-  height: 800px;
+  height: 100vw;
   position: relative;
+  font-size: 1.5vw;
 }
 
 #zajecia-dodatkowe .word {
@@ -660,47 +655,47 @@ h2 {
 
 #zajecia-dodatkowe #word-1 {
   left: 12%;
-  font-size: 4vw;
+  font-size: 4em;
   font-weight: bold;
 }
 
 #zajecia-dodatkowe #word-2 {
-  top: 18%;
+  top: 22%;
   left: 40%;
-  font-size: 3.7vw
+  font-size: 3.7em;
 }
 
 #zajecia-dodatkowe #word-3 {
   top: 32%;
   right: 0%;
-  font-size: 4.4vw;
+  font-size: 4.4em;
   font-weight: 300;
 }
 
 #zajecia-dodatkowe #word-4 {
   top: 30%;
   left: 0%;
-  font-size: 9.6vw
+  font-size: 9.6em;
 }
 
 #zajecia-dodatkowe #word-5 {
   bottom: 31%;
   right: 21%;
-  font-size: 4vw;
+  font-size: 4em;
   font-weight: bold;
 }
 
 #zajecia-dodatkowe #word-6 {
   bottom: 20%;
   left: 13%;
-  font-size: 3vw;
+  font-size: 3em;
 }
 
 
 #zajecia-dodatkowe #word-7 {
   right: 10%;
   bottom: 0;
-  font-size: 3.5vw;
+  font-size: 3.5em;
   font-weight: 300;
 }
 
@@ -742,6 +737,281 @@ h2 {
 
 
 
+#lesne-przedszkole {
+
+  .wrapper {
+    padding-top: 0;
+    position: relative;
+  }
+
+  h3 {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    padding-left: .2em;
+    color: #359517;
+    font-size: 3.85rem;
+    text-transform: uppercase;
+    transform: translateY(9px);
+  }
+  
+  h3::before {
+    content: none;
+  }
+  
+  .primary-top-wrapper {
+    background: #359517;
+  }
+  
+  .primary-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 7vw;
+    height: inherit;
+    text-align: center;
+  }
+  
+  .primary-middle {
+    background: #ddd;
+  }
+  
+  .primary-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // height: 700px;
+    height: 400px;
+    color: #ffffff;
+    // font-size: 1.8rem;
+    font-size: 1.2rem;
+    padding: 0 1.6em;
+    text-align: center;
+    li {
+      text-shadow: 0 0 6px black;
+    }
+  }
+
+  .secondary-wrapper {
+    padding: 2em;
+    background: rgba(198, 241, 47, .5);
+    font-size: .6rem;
+  }
+  
+  .secondary-top h4 {
+    font-size: 2.9em;
+  }
+  
+  .secondary-middle {
+    height: 165px;
+    // height: 350px;
+  }
+  
+  .secondary-list {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 1.7em;
+    text-align: center;
+    color: #ffffff;
+    li {
+      text-shadow: 0 0 6px black;
+    }
+  }
+
+  .primary-middle {
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  .primary-bottom-wrapper {
+    background: #80de76;
+    // font-size: 2.1rem;
+    font-size: 1.5rem;
+    padding: .5em;
+  }
+  
+  .primary-bottom {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .primary-bottom a {
+    font-size: .85em;
+    padding: .25em 1.35em;
+    border-radius: 1em;
+    color: #ffffff;
+    background: #359517;
+    border: .15em solid #359517;
+    transition: .3s ease;
+    margin-left: 1.5em;
+  }
+
+  .primary-bottom a:hover {
+    color: #359517;
+    background: none;
+  }
+
+  .primary-bottom span {
+    color: #2c7714;
+  }
+  
+  @media (max-width: 767px) {
+
+    .primary-top-wrapper {
+      padding: 1.5em 0;
+    }
+
+    h3 {
+      padding-left: 2.5vw;
+      font-size: 8.5vw;
+      transform: translateY(4px);
+    }
+
+    .primary-list {
+      height: 130vw;
+      font-size: 6.8vw;
+      padding: 0 .6em;
+    }
+
+    .primary-bottom-wrapper {
+      padding: 0 .5em;
+      background: linear-gradient(transparent, #ffffff 30%);
+      margin-top: 1em;
+    }
+
+    .primary-bottom {
+      flex-direction: column;
+      text-align: center;
+      font-size: 7vw;
+    }
+
+    .primary-bottom a {
+      margin-top: .5em;
+    }
+
+    .secondary-wrapper {
+      padding: .5em 1em;
+      font-size: 3.5vw;
+      text-align: center;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .secondary-middle {
+      height: 65vw;
+    }
+
+  }
+
+  @media (min-width: 768px) {
+
+    .primary-top {
+      width: 58%;
+      font-size: 2rem;
+    }
+    
+    .primary-list {
+      width: 46%;
+      padding: 0 6%;
+      box-sizing: content-box;
+    }
+
+    .primary-top-wrapper {
+      height: 160px;
+    }
+
+    .primary-bottom {
+      width: 70%;
+    }
+
+    .secondary-wrapper {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(calc(-50% + 40px));
+      width: 42%;
+      text-align: center;
+    }
+
+    .primary-bottom-wrapper {
+      font-size: 1.8rem;
+    }
+
+  }
+
+  @media (min-width: 1165px) {
+
+    h3 {
+      padding-left: .5em;
+      font-size: 4.5rem;
+      transform: translateY(11px);
+    }
+
+    .primary-top {
+      font-size: 2.4rem;
+    }
+
+  }
+
+  @media (min-width: 1318px) {
+
+    h3 {
+      padding-left: 1em;
+      font-size: 6rem;
+      transform: translateY(15px);
+    }
+
+    .primary-top {
+      font-size: 2.8rem;
+    }
+
+    .primary-list {
+      font-size: 1.6rem;
+      height: 500px;
+    }
+
+    .secondary-wrapper {
+      font-size: .9em;
+    }
+
+    .secondary-middle {
+      height: 240px;
+    }
+
+  }
+
+  @media (min-width: 1589px) {
+
+    .primary-list {
+      font-size: 1.9rem;
+      height: 700px;
+    }
+
+    .secondary-wrapper {
+      font-size: 1.05em;
+    }
+
+    .secondary-middle {
+      height: 320px;
+    }
+
+    .primary-bottom-wrapper {
+      font-size: 2rem;
+    }
+
+  }
+
+}
+
+
+
+
+
+
 
 
 
@@ -753,10 +1023,15 @@ h2 {
   flex-direction: row;
   flex-wrap: wrap;
   background: none;
+  padding: 0;
   .h3-background {
     display: flex;
     background: #ffffff;
     width: 100%;
+    padding: map-get($vertical_articles_spacing, large) 0 map-get($vertical_article_children_spacing, large);
+    @media(max-width: 767px) {
+      padding: map-get($vertical_articles_spacing, small) 0 map-get($vertical_article_children_spacing, small);
+    }
   }
 }
 
@@ -817,6 +1092,7 @@ h2 {
 
 .cta-btn-top {
   grid-area: cbt;
+  background: rgba(253, 127, 232, .5);
 }
 
 .cta-span-top {
@@ -847,6 +1123,7 @@ h2 {
 
 .cta-btn-bottom {
   grid-area: cbb;
+  background: rgba(0, 255, 246, .5)
 }
 
 .cta-img-bottom {
@@ -884,10 +1161,11 @@ h2 {
   }
 }
 
-.cta-placeholder {
+div.cta-placeholder {
   flex: 1;
   background-color: #ffffff;
   min-width: 1px;
+  padding-top: 0;
 }
 
 
@@ -1147,7 +1425,15 @@ h2 {
     width: 40px;
     transform: translateY(-50%);
   }
-  
+
+  #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
+    height: 800px;
+  }
+
+  #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
+    font-size: 1vw;
+  }
+
 }
 
 @media(min-width: 920px) {

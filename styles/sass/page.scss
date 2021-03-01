@@ -16,15 +16,6 @@ main {
   background-color: white;
 }
 
-h2, h3 {
-  padding-top: 45px;
-  &::before {
-    height: calc(100% - 45px);
-    top: initial;
-    bottom: 0;
-  }
-}
-
 p {
   margin: 0;
 }
@@ -248,41 +239,20 @@ p {
   margin-top: 1.5em;
 }
 
-.decor-top, .decor-bottom {
-  position: absolute;
-  width: 180px;
-  height: 30px;
-  background: rgba(255, 166, 0, 0.5);
-  z-index: -1;
-  display: none;
-  &::before {
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: rgba(255, 81, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    transform: rotate(90deg);
-  }
+.zasady p {
+  display: inline;
 }
 
-.decor-top {
-  top: -40px;
-  left: -40px;
-  &::before {
-    transform-origin: 15px;
-  }
-}
+@for $i from 0 through 19 {
 
-.decor-bottom {
-  bottom: -40px;
-  right: -40px;
-  &::before {
-    transform-origin: 285px;    
+  .zasady ol li:nth-of-type(#{$i + 1}) {
+    border: 2px dashed map-get($colors, ($i % 5) + 1);
+    &::marker {
+      color: map-get($colors, ($i % 5) + 1);
+    }
   }
-}
 
+}
 
 
 
@@ -306,7 +276,6 @@ p {
   flex-direction: column;
   justify-content: space-between;
   padding: 2.4em;
-  font-size: 24px;
   p {
     line-height: 1.6;
   }
@@ -319,6 +288,12 @@ p {
 
 .rect.right {
   background: #FFEFBA;
+}
+
+@media (min-width: 767px) {
+  .rect {
+    font-size: 24px;
+  }
 }
 
 
@@ -411,6 +386,7 @@ p {
 .kontakt .wrapper {
   display: flex;
   flex-direction: column;
+  padding-bottom: 1em;
 }
 
 .kontakt .wrapper > * + * {
@@ -426,6 +402,10 @@ p {
 
 .kontakt .left > * + * {
   margin-top: 1em;
+}
+
+.kontakt .right {
+  box-shadow: 3px 3px 12px 0 #ddd;
 }
 
 .kontakt .contact-list {
@@ -460,6 +440,11 @@ p {
   height: 100%;
 }
 
+.kontakt .buttons-wrapper > a:hover {
+  transition: .2s ease;
+  transform: scale(1.1)
+}
+
 .kontakt {
 
   #call-button {
@@ -472,6 +457,11 @@ p {
 
   #facebook-button {
     background-color: $theme_color_6;
+    svg {
+      stroke: black;
+      stroke-width: 3em;
+      overflow: visible;
+    }
   }
 
 }
@@ -630,7 +620,7 @@ p {
   }
 
   .zasady .column {
-    width: 48%;
+    width: 49%;
     justify-content: space-between;
   }
 
@@ -645,6 +635,10 @@ p {
   .zasady .column.left img {
     margin-bottom: 0;
     margin-top: 1.5em;
+  }
+
+  .zasady li {
+    padding: .75em;
   }
 
   .prostokaty .wrapper {

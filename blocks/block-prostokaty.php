@@ -1,5 +1,5 @@
 <article class="prostokaty wrapper-responsive-mb">
-    <h2 fade="right"><?php block_field("title") ?></h2>
+    <h3 fade="right"><?php block_field("title") ?></h2>
     <div class="wrapper">
         <div class="rect left" fade="left">
             <?php block_field("left") ?>

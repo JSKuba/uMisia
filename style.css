@@ -297,6 +297,11 @@ Version: 1.0
   height: 14rem;
   position: relative;
 }
+@media (max-width: 787px) {
+  .main-footer::before {
+    height: 7rem;
+  }
+}
 
 .footer-top-wrapper {
   padding: 1rem 0;
@@ -510,6 +515,24 @@ article {
   flex-direction: column;
 }
 
+article:not(:first-of-type) + article {
+  padding-top: 6rem;
+}
+@media (max-width: 787px) {
+  article:not(:first-of-type) + article {
+    padding-top: 4rem;
+  }
+}
+
+article > *:first-child + * {
+  padding-top: 5rem;
+}
+@media (max-width: 787px) {
+  article > *:first-child + * {
+    padding-top: 4rem;
+  }
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -525,7 +548,7 @@ a {
 p {
   margin: 0 auto;
   color: #333333;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 main {
@@ -548,23 +571,27 @@ ol {
 
 h2, h3 {
   display: inline-flex;
-  font-size: 2.7rem;
+  font-size: 3.05rem;
   margin: 0 auto;
-  margin-bottom: 2.4em;
   line-height: 1;
   position: relative;
   color: #ff5e00;
   text-align: center;
 }
+@media (max-width: 787px) {
+  h2, h3 {
+    font-size: 9.5vw;
+  }
+}
 h2::before, h3::before {
   content: "";
   position: absolute;
-  width: 13px;
   height: 100%;
+  width: 0.23em;
   top: 0;
-  left: -29px;
+  left: -0.5em;
   background: #ff6600;
-  border-left: 8px solid #ffbb00;
+  border-left: 0.15em solid #ffbb00;
 }
 
 h4 {
@@ -944,10 +971,6 @@ h2::before {
   background: #FFB0B0;
 }
 
-#metody {
-  padding-top: 14rem;
-}
-
 #metody-container {
   display: grid;
   grid-template-rows: repeat(6, 1fr);
@@ -1081,8 +1104,8 @@ h2::before {
   transition: opacity 0.4s ease 0.2s, transform 0.4s ease;
 }
 
-#projekty {
-  padding: 14rem 0;
+#projekty .wrapper {
+  padding-bottom: 6px;
 }
 
 #projekty-container {
@@ -1311,13 +1334,10 @@ h2::before {
   z-index: 2;
 }
 
-#zajecia-dodatkowe {
-  padding-bottom: 14em;
-}
-
 #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
-  height: 800px;
+  height: 100vw;
   position: relative;
+  font-size: 1.5vw;
 }
 
 #zajecia-dodatkowe .word {
@@ -1327,46 +1347,46 @@ h2::before {
 
 #zajecia-dodatkowe #word-1 {
   left: 12%;
-  font-size: 4vw;
+  font-size: 4em;
   font-weight: bold;
 }
 
 #zajecia-dodatkowe #word-2 {
-  top: 18%;
+  top: 22%;
   left: 40%;
-  font-size: 3.7vw;
+  font-size: 3.7em;
 }
 
 #zajecia-dodatkowe #word-3 {
   top: 32%;
   right: 0%;
-  font-size: 4.4vw;
+  font-size: 4.4em;
   font-weight: 300;
 }
 
 #zajecia-dodatkowe #word-4 {
   top: 30%;
   left: 0%;
-  font-size: 9.6vw;
+  font-size: 9.6em;
 }
 
 #zajecia-dodatkowe #word-5 {
   bottom: 31%;
   right: 21%;
-  font-size: 4vw;
+  font-size: 4em;
   font-weight: bold;
 }
 
 #zajecia-dodatkowe #word-6 {
   bottom: 20%;
   left: 13%;
-  font-size: 3vw;
+  font-size: 3em;
 }
 
 #zajecia-dodatkowe #word-7 {
   right: 10%;
   bottom: 0;
-  font-size: 3.5vw;
+  font-size: 3.5em;
   font-weight: 300;
 }
 
@@ -1398,15 +1418,233 @@ h2::before {
   color: #33ff00;
 }
 
+#lesne-przedszkole .wrapper {
+  padding-top: 0;
+  position: relative;
+}
+#lesne-przedszkole h3 {
+  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding-left: 0.2em;
+  color: #359517;
+  font-size: 3.85rem;
+  text-transform: uppercase;
+  transform: translateY(9px);
+}
+#lesne-przedszkole h3::before {
+  content: none;
+}
+#lesne-przedszkole .primary-top-wrapper {
+  background: #359517;
+}
+#lesne-przedszkole .primary-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 7vw;
+  height: inherit;
+  text-align: center;
+}
+#lesne-przedszkole .primary-middle {
+  background: #ddd;
+}
+#lesne-przedszkole .primary-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 400px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  padding: 0 1.6em;
+  text-align: center;
+}
+#lesne-przedszkole .primary-list li {
+  text-shadow: 0 0 6px black;
+}
+#lesne-przedszkole .secondary-wrapper {
+  padding: 2em;
+  background: rgba(198, 241, 47, 0.5);
+  font-size: 0.6rem;
+}
+#lesne-przedszkole .secondary-top h4 {
+  font-size: 2.9em;
+}
+#lesne-przedszkole .secondary-middle {
+  height: 165px;
+}
+#lesne-przedszkole .secondary-list {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 1.7em;
+  text-align: center;
+  color: #ffffff;
+}
+#lesne-przedszkole .secondary-list li {
+  text-shadow: 0 0 6px black;
+}
+#lesne-przedszkole .primary-middle {
+  background-size: cover;
+  background-attachment: fixed;
+}
+#lesne-przedszkole .primary-bottom-wrapper {
+  background: #80de76;
+  font-size: 1.5rem;
+  padding: 0.5em;
+}
+#lesne-przedszkole .primary-bottom {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#lesne-przedszkole .primary-bottom a {
+  font-size: 0.85em;
+  padding: 0.25em 1.35em;
+  border-radius: 1em;
+  color: #ffffff;
+  background: #359517;
+  border: 0.15em solid #359517;
+  transition: 0.3s ease;
+  margin-left: 1.5em;
+}
+#lesne-przedszkole .primary-bottom a:hover {
+  color: #359517;
+  background: none;
+}
+#lesne-przedszkole .primary-bottom span {
+  color: #2c7714;
+}
+@media (max-width: 767px) {
+  #lesne-przedszkole .primary-top-wrapper {
+    padding: 1.5em 0;
+  }
+  #lesne-przedszkole h3 {
+    padding-left: 2.5vw;
+    font-size: 8.5vw;
+    transform: translateY(4px);
+  }
+  #lesne-przedszkole .primary-list {
+    height: 130vw;
+    font-size: 6.8vw;
+    padding: 0 0.6em;
+  }
+  #lesne-przedszkole .primary-bottom-wrapper {
+    padding: 0 0.5em;
+    background: linear-gradient(transparent, #ffffff 30%);
+    margin-top: 1em;
+  }
+  #lesne-przedszkole .primary-bottom {
+    flex-direction: column;
+    text-align: center;
+    font-size: 7vw;
+  }
+  #lesne-przedszkole .primary-bottom a {
+    margin-top: 0.5em;
+  }
+  #lesne-przedszkole .secondary-wrapper {
+    padding: 0.5em 1em;
+    font-size: 3.5vw;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+  #lesne-przedszkole .secondary-middle {
+    height: 65vw;
+  }
+}
+@media (min-width: 768px) {
+  #lesne-przedszkole .primary-top {
+    width: 58%;
+    font-size: 2rem;
+  }
+  #lesne-przedszkole .primary-list {
+    width: 46%;
+    padding: 0 6%;
+    box-sizing: content-box;
+  }
+  #lesne-przedszkole .primary-top-wrapper {
+    height: 160px;
+  }
+  #lesne-przedszkole .primary-bottom {
+    width: 70%;
+  }
+  #lesne-przedszkole .secondary-wrapper {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(calc(-50% + 40px));
+    width: 42%;
+    text-align: center;
+  }
+  #lesne-przedszkole .primary-bottom-wrapper {
+    font-size: 1.8rem;
+  }
+}
+@media (min-width: 1165px) {
+  #lesne-przedszkole h3 {
+    padding-left: 0.5em;
+    font-size: 4.5rem;
+    transform: translateY(11px);
+  }
+  #lesne-przedszkole .primary-top {
+    font-size: 2.4rem;
+  }
+}
+@media (min-width: 1318px) {
+  #lesne-przedszkole h3 {
+    padding-left: 1em;
+    font-size: 6rem;
+    transform: translateY(15px);
+  }
+  #lesne-przedszkole .primary-top {
+    font-size: 2.8rem;
+  }
+  #lesne-przedszkole .primary-list {
+    font-size: 1.6rem;
+    height: 500px;
+  }
+  #lesne-przedszkole .secondary-wrapper {
+    font-size: 0.9em;
+  }
+  #lesne-przedszkole .secondary-middle {
+    height: 240px;
+  }
+}
+@media (min-width: 1589px) {
+  #lesne-przedszkole .primary-list {
+    font-size: 1.9rem;
+    height: 700px;
+  }
+  #lesne-przedszkole .secondary-wrapper {
+    font-size: 1.05em;
+  }
+  #lesne-przedszkole .secondary-middle {
+    height: 320px;
+  }
+  #lesne-przedszkole .primary-bottom-wrapper {
+    font-size: 2rem;
+  }
+}
+
 #cta {
   flex-direction: row;
   flex-wrap: wrap;
   background: none;
+  padding: 0;
 }
 #cta .h3-background {
   display: flex;
   background: #ffffff;
   width: 100%;
+  padding: 6rem 0 5rem;
+}
+@media (max-width: 767px) {
+  #cta .h3-background {
+    padding: 4rem 0 4rem;
+  }
 }
 
 .cta-container {
@@ -1458,6 +1696,7 @@ h2::before {
 
 .cta-btn-top {
   grid-area: cbt;
+  background: rgba(253, 127, 232, 0.5);
 }
 
 .cta-span-top {
@@ -1488,6 +1727,7 @@ h2::before {
 
 .cta-btn-bottom {
   grid-area: cbb;
+  background: rgba(0, 255, 246, 0.5);
 }
 
 .cta-img-bottom {
@@ -1525,10 +1765,11 @@ h2::before {
   color: #00FFF6;
 }
 
-.cta-placeholder {
+div.cta-placeholder {
   flex: 1;
   background-color: #ffffff;
   min-width: 1px;
+  padding-top: 0;
 }
 
 @media (min-width: 374px) {
@@ -1748,6 +1989,14 @@ h2::before {
     bottom: 4%;
     width: 40px;
     transform: translateY(-50%);
+  }
+
+  #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
+    height: 800px;
+  }
+
+  #zajecia-dodatkowe .zajecia-dodatkowe-wrapper {
+    font-size: 1vw;
   }
 }
 @media (min-width: 920px) {

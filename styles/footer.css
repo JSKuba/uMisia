@@ -8,6 +8,11 @@
   height: 14rem;
   position: relative;
 }
+@media (max-width: 787px) {
+  .main-footer::before {
+    height: 7rem;
+  }
+}
 
 .footer-top-wrapper {
   padding: 1rem 0;

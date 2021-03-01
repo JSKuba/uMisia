@@ -1,62 +1,8 @@
-function delayedLoop(callbackFunction, [indexLimit, delay, counterChange= 0, index = 0, counter = 0]) {
-
-  callbackFunction(counter, index)
-  counter += counterChange
-  index += 1
-
-  if (index <= indexLimit) {
-    setTimeout(() => {
-      return delayedLoop(callbackFunction, [indexLimit, delay, counterChange, index, counter])
-    }, delay)
-  }
-
-  return true
-
-}
-
-function changeColorbarHeight(counter, index) {
-
-  function givenFunction(givenCounterValue, givenIndexValue) {
-    const element = navActive ? document.getElementById(`color-bar-line-${4 - index}`) : document.getElementById(`color-bar-line-${index}`)
-      if (givenCounterValue > mobileNavHeight) {
-        givenCounterValue = mobileNavHeight
-      }
-      element.style.transform = `translateY(${navActive ? mobileNavHeight - givenCounterValue : givenCounterValue}px)` 
-  }
-
-  return delayedLoop(givenFunction, [Math.ceil(mobileNavHeight/8), 10, 8])
-  
-}
-
-function setNavStyles(navActive) {
-
-  mainNav.style.transition = navActive ? `${windowWidth / 8 * 10 + 50}ms linear` : `${windowWidth / 8 * 10 + 50}ms linear ${windowWidth / 8 * 10 + 250}ms`
-  mainNav.style.transform = navActive ? `translateX(-${windowWidth}px)` : 'translateX(0px)'
-  mainNav.style.opacity = navActive ? '0' : '1'
-  mainHeader.style.transition = navActive ? `${mobileNavHeight / 8 * 10 + 50}ms linear ${mobileNavHeight / 8 * 10 + 250}ms` : `${mobileNavHeight / 8 * 10 + 50}ms linear`
-  navHamburgerButton.style.transform = navActive ? 'translateY(0px)' : `translateY(${mobileNavHeight}px)`
-  mainLogo.style.transform = navActive ? 'translateY(0px)' : `translateY(${mobileNavHeight}px)`
-
-}
-
 function scrollIndicatorDetach() {
   
   document.getElementById('scroll-indicator').classList.remove('show')
   document.getElementById('scroll-indicator').setAttribute('hidden', '')
   return scrollIndicatorDetach = function() { return true }
-
-}
-
-function navButtonFunctionality() {
-
-  navActive = !navActive
-  navHamburgerButton.removeEventListener('click', navButtonFunctionality)
-  setNavStyles(navActive)
-  setTimeout(() => {
-    navHamburgerButton.addEventListener('click', navButtonFunctionality)
-  }, (mobileNavHeight / 8 * 10 + 1000))
-
-  return delayedLoop(changeColorbarHeight, [4, 200])
 
 }
 
@@ -136,17 +82,6 @@ function setAndAppendMasks() {
 
 }
 
-function updateDimensions(deepUpdate = false) {
-  windowWidth = window.innerWidth
-  mobileNavHeight = window.innerHeight * 0.6
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  document.documentElement.style.setProperty('--vw', `${window.innerWidth * 0.01}px`);
-  if (deepUpdate) {
-    atutyOffsetTop = document.getElementById('atuty').offsetTop
-    atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
-  }
-}
-
 function handleHorizontalScroll(event) {
 
   horizontalScroll.dynamicPageX = horizontalScroll.offsetPageX + (horizontalScroll.touchStartX - event.changedTouches[0].pageX)
@@ -182,9 +117,12 @@ function switchCardIfNeed(event, direction) {
     direction === 'left' && (sliderPosition -= 1)
     direction === 'right' && (sliderPosition += 1)
   } else {
-    horizontalScroll.touchStartX - horizontalScroll.touchEndX > 0
-    ? sliderPosition += 1
-    : sliderPosition -= 1
+    difference = horizontalScroll.touchStartX - horizontalScroll.touchEndX
+    if (Math.abs(difference) >= horizontalScroll.tolerationLength) {
+      difference > 0
+      ? sliderPosition += 1
+      : sliderPosition -= 1
+    }
   }
   sliderPosition < 0 && (sliderPosition = 0)
   sliderPosition > 5 && (sliderPosition = 5)
@@ -218,6 +156,7 @@ function createBackground() {
     document.getElementById('action-button').style.transform = 'none'
     document.getElementById('action-button').style.opacity = '1'
     document.getElementById('scroll-indicator').getAttribute('hidden') !== '' && document.getElementById('scroll-indicator').classList.add('show')
+    return updateDimensionsAtuty()
   })
   
 }
@@ -247,62 +186,14 @@ function attachCardsFunctionality() {
 function setHeights() {
   
   document.getElementById('hero').style.height = window.innerHeight + 'px';
-  document.getElementById('atuty').style.height = window.innerHeight * 8 + 'px';
   
 }
 
-function checkfadeElements() {
-
-  firstElement = fadeElementsArray[0]
-
-  if (firstElement && window.pageYOffset + window.innerHeight * 0.66 > firstElement.breakpoint) {
-    firstElement.node.setAttribute('visible', '')
-    fadeElementsArray.shift()
-    fadeElementsArray.length === 0 && (checkfadeElements = function() {return true})
-  }
-
-}
-
-function updateFadeElementsArray() {
-
-  document.querySelectorAll('[fade]').forEach(element => {
-
-    elementOffsetTop =  element.getBoundingClientRect().top
-
-    if (window.pageYOffset + window.innerHeight * 0.66 >= elementOffsetTop) {
-
-      element.setAttribute('visible', '')
-
-    } else if (!element.getAttribute('visible')) {
-
-      if (!fadeElementsArray.length) {
-
-        fadeElementsArray.push({node: element, breakpoint: elementOffsetTop})
-  
-      } else {
-  
-        for (backwardsCounter = fadeElementsArray.length - 1; backwardsCounter >= 0; backwardsCounter -= 1) {
-          
-          if (elementOffsetTop >= fadeElementsArray[backwardsCounter].breakpoint && backwardsCounter === fadeElementsArray.length - 1) {
-
-            fadeElementsArray.push({node: element, breakpoint: elementOffsetTop})
-            break
-  
-          } else if (elementOffsetTop >= fadeElementsArray[backwardsCounter].breakpoint) {
-  
-            fadeElementsArray.splice(backwardsCounter + 1, 0, {node: element, breakpoint: elementOffsetTop})
-            break
-  
-          }
-  
-        }
-  
-      }
-
-    }
-
-  })
-
+function updateDimensionsAtuty() {
+  atutyHeight = 8 * window.innerHeight
+  atutyOffsetTop = document.getElementById('atuty').offsetTop
+  atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
+  return atutyHeight, atutyOffsetTop, atutyOffsetBottom
 }
 
 
@@ -313,17 +204,6 @@ function updateFadeElementsArray() {
 
 
 
-
-
-
-
-const colorPalette = ['#00FCE2','#703cff','#ca00fc','#FD7FE8','#FFB0B0','#00ffff']
-const navHamburgerButton = document.getElementsByClassName('nav-btn-hamburger')[0]
-const colorBarContainer = document.getElementsByClassName('color-bar-container')[0]
-const colorBarLines = [...document.getElementsByClassName('color-bar-line')]
-const mainHeader = document.getElementById('main-header')
-const mainNav = document.getElementsByClassName('main-nav')[0]
-const mainLogo = document.getElementsByClassName('custom-logo')[0]
 const atutyContainerWrapper = document.getElementById('atuty-container-wrapper')
 const projektyContainer = document.getElementById('projekty-container')
 const projektWidth = document.getElementsByClassName('projekt')[0].getBoundingClientRect().width
@@ -332,20 +212,15 @@ const arrows = [...document.getElementsByClassName('arrow')]
 const progressBar = document.getElementsByClassName('slider-footer-progress')[0]
 const progressDashWidth = document.getElementsByClassName('slider-footer-dash')[0].clientWidth
 const sliderFooterArrows = [...document.getElementsByClassName('slider-footer-arrow')]
-const fadeElementsArray = []
 
-let atutyHeight = 8 * window.innerHeight
-let atutyOffsetTop = document.getElementById('atuty').offsetTop
-let atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight
-let navActive = true
-let isSticky = false;
-let isStickyCopy = false;
+let atutyHeight, atutyOffsetTop, atutyOffsetBottom
 let insideFixedSection = false;
 let horizontalScroll = {
   touchStartX: 0,
   touchEndX: 0,
   dynamicPageX: 0,
-  offsetPageX: 0
+  offsetPageX: 0,
+  tolerationLength: 50,
 }
 let sliderPosition = 0;
 
@@ -370,6 +245,7 @@ window.onload = () => {
   updateFadeElementsArray()
   stickySectionFunctionality(true)
   updateDimensions(true)
+  updateDimensionsAtuty()
 }
 
 

@@ -287,8 +287,13 @@
   content: "";
   display: block;
   background: white;
-  height: 2.4em;
+  height: 14rem;
   position: relative;
+}
+@media (max-width: 787px) {
+  .main-footer::before {
+    height: 7rem;
+  }
 }
 
 .footer-top-wrapper {
@@ -503,6 +508,24 @@ article {
   flex-direction: column;
 }
 
+article:not(:first-of-type) + article {
+  padding-top: 6rem;
+}
+@media (max-width: 787px) {
+  article:not(:first-of-type) + article {
+    padding-top: 4rem;
+  }
+}
+
+article > *:first-child + * {
+  padding-top: 5rem;
+}
+@media (max-width: 787px) {
+  article > *:first-child + * {
+    padding-top: 4rem;
+  }
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -518,7 +541,7 @@ a {
 p {
   margin: 0 auto;
   color: #333333;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 main {
@@ -541,23 +564,27 @@ ol {
 
 h2, h3 {
   display: inline-flex;
-  font-size: 2.7rem;
+  font-size: 3.05rem;
   margin: 0 auto;
-  margin-bottom: 2.4em;
   line-height: 1;
   position: relative;
   color: #ff5e00;
   text-align: center;
 }
+@media (max-width: 787px) {
+  h2, h3 {
+    font-size: 9.5vw;
+  }
+}
 h2::before, h3::before {
   content: "";
   position: absolute;
-  width: 13px;
   height: 100%;
+  width: 0.23em;
   top: 0;
-  left: -29px;
+  left: -0.5em;
   background: #ff6600;
-  border-left: 8px solid #ffbb00;
+  border-left: 0.15em solid #ffbb00;
 }
 
 h4 {
@@ -607,8 +634,11 @@ h4 {
   }
 }
 *[fade] {
+  transition: transform 0.8s ease-out, opacity 0.6s ease-out, color 0.6s ease-out;
+}
+
+*[fade]:not([fade=color]) {
   opacity: 0;
-  transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 }
 
 *[fade][visible] {
@@ -634,15 +664,6 @@ body {
 main {
   min-height: calc(100vh - 432px);
   background-color: white;
-}
-
-h2, h3 {
-  padding-top: 45px;
-}
-h2::before, h3::before {
-  height: calc(100% - 45px);
-  top: initial;
-  bottom: 0;
 }
 
 p {
@@ -858,39 +879,148 @@ p {
   margin-top: 1.5em;
 }
 
-.decor-top, .decor-bottom {
-  position: absolute;
-  width: 180px;
-  height: 30px;
-  background: rgba(255, 166, 0, 0.5);
-  z-index: -1;
-  display: none;
-}
-.decor-top::before, .decor-bottom::before {
-  content: "";
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: rgba(255, 81, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  transform: rotate(90deg);
+.zasady p {
+  display: inline;
 }
 
-.decor-top {
-  top: -40px;
-  left: -40px;
+.zasady ol li:nth-of-type(1) {
+  border: 2px dashed #00FCE2;
 }
-.decor-top::before {
-  transform-origin: 15px;
+.zasady ol li:nth-of-type(1)::marker {
+  color: #00FCE2;
 }
 
-.decor-bottom {
-  bottom: -40px;
-  right: -40px;
+.zasady ol li:nth-of-type(2) {
+  border: 2px dashed #703cff;
 }
-.decor-bottom::before {
-  transform-origin: 285px;
+.zasady ol li:nth-of-type(2)::marker {
+  color: #703cff;
+}
+
+.zasady ol li:nth-of-type(3) {
+  border: 2px dashed #ca00fc;
+}
+.zasady ol li:nth-of-type(3)::marker {
+  color: #ca00fc;
+}
+
+.zasady ol li:nth-of-type(4) {
+  border: 2px dashed #FD7FE8;
+}
+.zasady ol li:nth-of-type(4)::marker {
+  color: #FD7FE8;
+}
+
+.zasady ol li:nth-of-type(5) {
+  border: 2px dashed #FFB0B0;
+}
+.zasady ol li:nth-of-type(5)::marker {
+  color: #FFB0B0;
+}
+
+.zasady ol li:nth-of-type(6) {
+  border: 2px dashed #00FCE2;
+}
+.zasady ol li:nth-of-type(6)::marker {
+  color: #00FCE2;
+}
+
+.zasady ol li:nth-of-type(7) {
+  border: 2px dashed #703cff;
+}
+.zasady ol li:nth-of-type(7)::marker {
+  color: #703cff;
+}
+
+.zasady ol li:nth-of-type(8) {
+  border: 2px dashed #ca00fc;
+}
+.zasady ol li:nth-of-type(8)::marker {
+  color: #ca00fc;
+}
+
+.zasady ol li:nth-of-type(9) {
+  border: 2px dashed #FD7FE8;
+}
+.zasady ol li:nth-of-type(9)::marker {
+  color: #FD7FE8;
+}
+
+.zasady ol li:nth-of-type(10) {
+  border: 2px dashed #FFB0B0;
+}
+.zasady ol li:nth-of-type(10)::marker {
+  color: #FFB0B0;
+}
+
+.zasady ol li:nth-of-type(11) {
+  border: 2px dashed #00FCE2;
+}
+.zasady ol li:nth-of-type(11)::marker {
+  color: #00FCE2;
+}
+
+.zasady ol li:nth-of-type(12) {
+  border: 2px dashed #703cff;
+}
+.zasady ol li:nth-of-type(12)::marker {
+  color: #703cff;
+}
+
+.zasady ol li:nth-of-type(13) {
+  border: 2px dashed #ca00fc;
+}
+.zasady ol li:nth-of-type(13)::marker {
+  color: #ca00fc;
+}
+
+.zasady ol li:nth-of-type(14) {
+  border: 2px dashed #FD7FE8;
+}
+.zasady ol li:nth-of-type(14)::marker {
+  color: #FD7FE8;
+}
+
+.zasady ol li:nth-of-type(15) {
+  border: 2px dashed #FFB0B0;
+}
+.zasady ol li:nth-of-type(15)::marker {
+  color: #FFB0B0;
+}
+
+.zasady ol li:nth-of-type(16) {
+  border: 2px dashed #00FCE2;
+}
+.zasady ol li:nth-of-type(16)::marker {
+  color: #00FCE2;
+}
+
+.zasady ol li:nth-of-type(17) {
+  border: 2px dashed #703cff;
+}
+.zasady ol li:nth-of-type(17)::marker {
+  color: #703cff;
+}
+
+.zasady ol li:nth-of-type(18) {
+  border: 2px dashed #ca00fc;
+}
+.zasady ol li:nth-of-type(18)::marker {
+  color: #ca00fc;
+}
+
+.zasady ol li:nth-of-type(19) {
+  border: 2px dashed #FD7FE8;
+}
+.zasady ol li:nth-of-type(19)::marker {
+  color: #FD7FE8;
+}
+
+.zasady ol li:nth-of-type(20) {
+  border: 2px dashed #FFB0B0;
+}
+.zasady ol li:nth-of-type(20)::marker {
+  color: #FFB0B0;
 }
 
 .prostokaty .wrapper {
@@ -904,7 +1034,6 @@ p {
   flex-direction: column;
   justify-content: space-between;
   padding: 2.4em;
-  font-size: 24px;
 }
 .rect p {
   line-height: 1.6;
@@ -919,6 +1048,11 @@ p {
   background: #FFEFBA;
 }
 
+@media (min-width: 767px) {
+  .rect {
+    font-size: 24px;
+  }
+}
 .ztk .wrapper {
   display: flex;
   flex-direction: column;
@@ -984,6 +1118,7 @@ p {
 .kontakt .wrapper {
   display: flex;
   flex-direction: column;
+  padding-bottom: 1em;
 }
 
 .kontakt .wrapper > * + * {
@@ -998,6 +1133,10 @@ p {
 
 .kontakt .left > * + * {
   margin-top: 1em;
+}
+
+.kontakt .right {
+  box-shadow: 3px 3px 12px 0 #ddd;
 }
 
 .kontakt .contact-list {
@@ -1032,6 +1171,11 @@ p {
   height: 100%;
 }
 
+.kontakt .buttons-wrapper > a:hover {
+  transition: 0.2s ease;
+  transform: scale(1.1);
+}
+
 .kontakt #call-button {
   background-color: #ca00fc;
 }
@@ -1040,6 +1184,11 @@ p {
 }
 .kontakt #facebook-button {
   background-color: #006eff;
+}
+.kontakt #facebook-button svg {
+  stroke: black;
+  stroke-width: 3em;
+  overflow: visible;
 }
 
 @media (min-width: 372px) {
@@ -1166,7 +1315,7 @@ p {
   }
 
   .zasady .column {
-    width: 48%;
+    width: 49%;
     justify-content: space-between;
   }
 
@@ -1181,6 +1330,10 @@ p {
   .zasady .column.left img {
     margin-bottom: 0;
     margin-top: 1.5em;
+  }
+
+  .zasady li {
+    padding: 0.75em;
   }
 
   .prostokaty .wrapper {

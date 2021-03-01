@@ -1,10 +1,15 @@
+@import 'variables';
+
 .main-footer {
   color: #ffffff;
   &::before {
     content: '';
     display: block;
     background: white;
-    height: 14rem;
+    height: map-get($footer_vertical_space, large);
+    @media(max-width: 787px) {
+      height: map-get($footer_vertical_space, small);
+    }
     position: relative;
   }
 }
