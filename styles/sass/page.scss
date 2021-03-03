@@ -466,6 +466,26 @@ p {
 
 }
 
+.galeria {
+
+  .images-list {
+    display: flex;
+    flex-direction: column;
+    img {
+      display: block;
+      width: 100%;
+    }
+    li + li {
+      margin-top: 1.4rem;
+    }
+  }
+
+  @media (min-width: 767px) {
+    
+  }
+
+}
+
 
 
 

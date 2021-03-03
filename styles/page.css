@@ -1191,6 +1191,17 @@ p {
   overflow: visible;
 }
 
+.galeria .images-list {
+  display: flex;
+  flex-direction: column;
+}
+.galeria .images-list img {
+  display: block;
+  width: 100%;
+}
+.galeria .images-list li + li {
+  margin-top: 1.4rem;
+}
 @media (min-width: 372px) {
   .hero .top h1 {
     font-size: 4em;

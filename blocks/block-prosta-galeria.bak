@@ -1,0 +1,9 @@
+<div class="galeria">
+    <ul class="images-list">
+        <?php for ($i = 1; $i <= 4; $i += 1) { ?>
+            <li>
+                <img src="<?php block_field("img-$i")?>" alt="<?php block_field("img-$i-alt")?>">
+            </li>
+        <?php } ?>
+    </ul>
+</div>
