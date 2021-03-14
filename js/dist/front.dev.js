@@ -61,6 +61,7 @@ function stickySectionFunctionality() {
 
 function setMaskTranslate() {
   var progress = Math.ceil((window.pageYOffset - atutyOffsetTop) / (atutyHeight - window.innerHeight) * 10000) / 100;
+  console.log(progress);
   var maskNumber = Math.ceil(progress / 20);
 
   if (maskNumber < 1) {
@@ -183,10 +184,21 @@ function attachCardsFunctionality() {
 }
 
 function setHeights() {
-  document.getElementById('hero').style.height = window.innerHeight + 'px';
+  heightToSet = window.innerHeight;
+
+  if (window.innerWidth >= 920) {
+    heightToSet += window.innerHeight * 40 / 100;
+  } else if (window.innerWidth >= 781) {
+    heightToSet += window.innerHeight * 20 / 100;
+  } else {
+    document.getElementById('hero-wrapper').style.height = heightToSet - document.getElementById('main-header').offsetHeight + 'px';
+  }
+
+  return document.getElementById('hero').style.height = heightToSet + 'px';
 }
 
 function updateDimensionsAtuty() {
+  console.log('updateDimensionsAtuty');
   atutyHeight = 8 * window.innerHeight;
   atutyOffsetTop = document.getElementById('atuty').offsetTop;
   atutyOffsetBottom = atutyOffsetTop + document.getElementById('atuty').getBoundingClientRect().height - window.innerHeight;
@@ -220,7 +232,7 @@ var sliderPosition = 0; // TO-DO
 setAndAppendMasks();
 
 window.onload = function () {
-  window.innerHeight < 786 && setHeights();
+  setHeights();
   createBackground();
   updateFadeElementsArray();
   stickySectionFunctionality(true);
@@ -231,7 +243,9 @@ window.onload = function () {
 
 attachCardsFunctionality();
 window.addEventListener('scroll', scrollFunctionality);
-window.addEventListener('resize', updateDimensions);
+window.addEventListener('resize', function () {
+  updateDimensions(), updateDimensionsAtuty();
+});
 navHamburgerButton.addEventListener('click', navButtonFunctionality);
 projektyContainer.addEventListener('touchmove', function (e) {
   return handleHorizontalScroll(e);

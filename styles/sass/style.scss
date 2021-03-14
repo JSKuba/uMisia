@@ -408,8 +408,8 @@ h2 {
   position: fixed;
   top: 0;
   left: 0;
-  width: calc(100 * var(--vw));
-  height: 100vh;
+  right: 0;
+  bottom: 0;
   background: rgba(0,0,0,.7);
   z-index: 2;
   align-items: center;
@@ -847,7 +847,6 @@ h2 {
     background: #359517;
     border: .15em solid #359517;
     transition: .3s ease;
-    margin-left: 1.5em;
   }
 
   .primary-bottom a:hover {
@@ -962,7 +961,7 @@ h2 {
     h3 {
       padding-left: 1em;
       font-size: 6rem;
-      transform: translateY(15px);
+      transform: translateY(17px);
     }
 
     .primary-top {
