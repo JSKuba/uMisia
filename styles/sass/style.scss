@@ -111,6 +111,7 @@ article {
   cursor: pointer;
   transition: transform .7s ease-out 1s, opacity .7s ease-out 1s, background-color .6s ease, color .6s ease;
   outline: none;
+  z-index: 1;
   &:hover {
     background: transparent;
     color: #333333;
@@ -294,6 +295,8 @@ h2 {
 .atut-name {
   flex: 2;
   padding-right: 50px;
+  padding-left: 22px;
+  font-size: 1.5rem;
 }
 
 .atut-number {
