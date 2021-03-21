@@ -645,7 +645,7 @@ h4 {
   transition: transform 0.8s ease-out, opacity 0.6s ease-out, color 0.6s ease-out;
 }
 
-*[fade]:not([fade=color]) {
+*[fade]:not([fade=color]), *[fade]:not([fade=callback]) {
   opacity: 0;
 }
 
@@ -833,7 +833,7 @@ h1 span::before {
   }
 }
 #o-nas {
-  padding: 50px 0 8em 0;
+  padding: 50px 0 0 0;
   overflow: hidden;
 }
 
@@ -886,6 +886,52 @@ h2::before {
   border: 5px solid #FF9101;
   transform: translate(20px, 20px);
   z-index: -1;
+}
+
+#usp-container {
+  display: flex;
+}
+#usp-container .usp-card {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#usp-container .usp-card svg {
+  width: 50%;
+  height: auto;
+}
+#usp-container .usp-card h3 {
+  color: #999999;
+  margin-top: 1.2rem;
+}
+#usp-container .usp-card h3::before {
+  display: none;
+}
+#usp-container .usp-card h3.counter-done {
+  color: #333333;
+}
+#usp-container .usp-card p {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  text-align: center;
+  line-height: 1.3;
+}
+#usp-container .usp-card-wrapper {
+  flex: 1;
+}
+#usp-container .usp-card-wrapper:nth-child(1) svg {
+  fill: #00FCE2;
+}
+#usp-container .usp-card-wrapper:nth-child(2) svg {
+  fill: #703cff;
+}
+#usp-container .usp-card-wrapper:nth-child(3) svg {
+  fill: #ca00fc;
+}
+#usp-container .usp-card-wrapper:nth-child(4) svg {
+  fill: #FD7FE8;
 }
 
 #atuty {
@@ -1087,19 +1133,28 @@ h2::before {
   font-size: 1.4rem;
   transform: translateX(-100%);
   opacity: 0;
-  cursor: pointer;
 }
 .metoda-desc p {
   color: #ffffff;
   max-width: 880px;
 }
-
+.metoda-desc span {
+  text-align: right;
+  display: block;
+  color: #ffffff;
+  font-weight: 600;
+}
 .metoda-desc h5 {
   text-align: center;
   color: #FF5924;
   font-size: 1.9em;
   margin: 0;
   margin-bottom: 0.5em;
+}
+.metoda-desc a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: #FF5924;
 }
 
 .metoda-desc-active {

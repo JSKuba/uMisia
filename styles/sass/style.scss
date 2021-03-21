@@ -181,7 +181,7 @@ h1 {
 
 
 #o-nas {
-  padding: 50px 0 8em 0;
+  padding: 50px 0 0 0;
   overflow: hidden;
 }
 
@@ -237,6 +237,60 @@ h2 {
 }
 
 
+
+
+
+
+
+
+
+
+
+#usp-container {
+  display: flex;
+  .usp-card {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    svg {
+      width: 50%;
+      height: auto;
+    }
+    h3 {
+      color: #999999;
+      margin-top: 1.2rem;
+      &::before {
+        display: none;
+      }
+      &.counter-done {
+        color: #333333;
+      }
+    }
+    p {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      text-align: center;
+      line-height: 1.3;
+    }
+  }
+  .usp-card-wrapper {
+    flex: 1;
+    &:nth-child(1) svg {
+      fill: $theme_color_0;
+    }
+    &:nth-child(2) svg {
+      fill: $theme_color_1;
+    }
+    &:nth-child(3) svg {
+      fill: $theme_color_2;
+    }
+    &:nth-child(4) svg {
+      fill: $theme_color_3;
+    }
+  }
+}
 
 
 
@@ -421,19 +475,28 @@ h2 {
   font-size: 1.4rem;
   transform: translateX(-100%);
   opacity: 0;
-  cursor: pointer;
   p {
     color: #ffffff;
     max-width: 880px;
   }
-}
-
-.metoda-desc h5 {
-  text-align: center;
-  color: #FF5924;
-  font-size: 1.9em;
-  margin: 0;
-  margin-bottom: .5em;
+  span {
+    text-align: right;
+    display: block;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  h5 {
+    text-align: center;
+    color: #FF5924;
+    font-size: 1.9em;
+    margin: 0;
+    margin-bottom: .5em;
+  }
+  a {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #FF5924;
+  }
 }
 
 .metoda-desc-active {

@@ -12,8 +12,12 @@
           </div>
         </div>
         <div class="metoda-desc" data="metoda-<?php echo $i ?>">
-        <h5><?php block_field("metoda-$i")?></h5>
-        <p class="wrapper-responsive"><?php block_field("metoda-$i-desc") ?></p>
+          <h5><?php block_field("metoda-$i")?></h5>
+          <p class="wrapper-responsive">
+            <?php block_field("metoda-$i-desc") ?>
+            <span class="author">Anna Kowalska</span>
+          </p>
+          <a href="#" class="read-more">Dowiedz się więcej</a>
         </div>
     <?php } ?>
 

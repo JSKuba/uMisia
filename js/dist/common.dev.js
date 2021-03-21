@@ -78,11 +78,30 @@ function updateDimensions() {
   mobileNavHeight = window.innerHeight * 0.6;
 }
 
+function setUSPCounter(target) {
+  var fps = target.dataset.uspFps;
+  var maxTime = target.dataset.uspTime;
+  var maxValue = target.dataset.uspLimit;
+  var trackedTime = 0;
+  var interval = setInterval(function () {
+    trackedTime += 1000 / fps;
+    target.innerHTML = Math.round(Math.sqrt(Math.sqrt(trackedTime)) * Math.sqrt(Math.sqrt(Math.pow(maxValue, 4) / maxTime)));
+
+    if (trackedTime >= maxTime) {
+      target.innerHTML = maxValue;
+      target.dataset.uspMore && (target.innerHTML += '+');
+      target.classList.add('counter-done');
+      clearInterval(interval);
+    }
+  }, 1000 / fps);
+}
+
 function checkfadeElements() {
   firstElement = fadeElementsArray[0];
 
   if (firstElement && window.pageYOffset + window.innerHeight * 0.66 > firstElement.breakpoint) {
     firstElement.node.setAttribute('visible', '');
+    firstElement.node.getAttribute('fade') == 'callback' && setUSPCounter(firstElement.node);
     fadeElementsArray.shift();
     fadeElementsArray.length === 0 && (checkfadeElements = function checkfadeElements() {
       return true;
